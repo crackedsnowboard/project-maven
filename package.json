@@ -1,0 +1,26 @@
+{
+  "name": "project-maven",
+  "version": "1.0.0",
+  "description": "Ideas, ideas, ideas === awesomeness, learning, excellence",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crackedsnowboard/project-maven.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crackedsnowboard/project-maven/issues"
+  },
+  "homepage": "https://github.com/crackedsnowboard/project-maven#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "mysql2": "^2.1.0"
+  }
+}
