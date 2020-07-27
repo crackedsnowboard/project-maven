@@ -26,7 +26,9 @@ router.get("/", function (req, res) {
 // (for testing purposes) add a new goal
 router.post("/api/goals", function (req, res) {
     db.Goals.create({"goalName": req.body.goalName})
-    .then(res.status(204).end())
+    .then(function(result) {
+        res.json({ id: result.insertID });
+    })
 });
 
 // (for testing purposes) add a new sub goal
@@ -34,7 +36,10 @@ router.post("/api/subgoals", function (req, res) {
     db.SubGoals.create({
         "subGoalName": req.body.subGoalName,
         "goalID": req.body.goalID
-    }).then(res.status(204).end())
+    })
+    .then(function(result) {
+        res.json({ id: result.insertID });
+    })
 });
 
 // (for testing purposes) commented out for now, just testing add and get capabilities

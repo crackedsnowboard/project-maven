@@ -32,7 +32,7 @@ $(function() {
         };
     
         // Send the POST request.
-        $.ajax("/api/subGoals", {
+        $.ajax("/api/subgoals", {
           type: "POST",
           data: newSubGoal
         }).then(
