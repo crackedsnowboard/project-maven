@@ -1,0 +1,41 @@
+<h1>Goals</h1>
+
+<h2>list of all goals (for testing purposes)</h2>
+
+<ul>
+  {{#each goals}}
+      {{> goals/goal-block}}
+  {{/each}}
+</ul>
+
+<h2>list of all sub goals (for testing purposes)</h2>
+
+<ul>
+  {{#each subGoals}}
+      {{> subGoals/subGoal-block}}
+  {{/each}}
+</ul>
+
+<h2>Add a goal</h2>
+<form class="goal-form">
+
+  <div class="form-group">
+    <label for="goa">New Goal Name:</label>
+    <input type="text" id="goa" name="name">
+  </div>
+
+  <button type="submit">Add Goal</button>
+</form>
+
+<h2>Add a sub goal</h2>
+<form class="subgoal-form">
+
+  <div class="form-group">
+    <label for="subgoa">New Sub Goal Name:</label>
+    <input type="text" id="subgoa-name" name="name">
+    <label for="subgoa">New Sub Goal GoalID:</label>
+    <input type="text" id="subgoa-id" name="id">
+  </div>
+
+  <button type="submit">Add Sub Goal</button>
+</form>
