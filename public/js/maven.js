@@ -43,4 +43,20 @@ $(function() {
           }
         );
       });
-  });
+
+
+// ====================== Colin's Work Station =================// 
+
+// For whatever button that is clicked, this will respond with the buttons' id
+$(".subGoal").on("click", function (event) {
+  console.log("subGoal clicked");
+  console.log("id = " + this.id);
+  // console.log("data-id = " + $(this.data('id')));
+
+  var id = this.id;
+  console.log("if this works, i hate everything " + id);
+})
+
+// ======================  =================// 
+
+});
