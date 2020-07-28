@@ -35,8 +35,6 @@ require("./routes/user-api-routes.js")(app)
 // Requiring our models for syncing
 const db = require("./models");
 
-app.use(routes);
-
 // Starts the server to begin listening
 // =============================================================
 db.sequelize.sync().then(function() {
