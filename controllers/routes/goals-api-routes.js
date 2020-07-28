@@ -22,7 +22,10 @@ module.exports = function(app) {
   app.post("/api/goals", function(req, res) {
     // Create an Goal with the data available to us in req.body
     console.log(req.body);
-    db.Goals.create(req.body).then(function(dbGoals) {
+    db.Goals.create({
+      "name": req.body.name,
+      "UserId": req.body.id
+    }).then(function(dbGoals) {
       res.json(dbGoals);
     });
   });
