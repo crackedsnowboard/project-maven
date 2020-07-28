@@ -6,7 +6,7 @@ $(document).ready(function() {
       event.preventDefault();
   
       var newGoal = {
-        goalName: $("#goa").val().trim(),
+        name: $("#goa").val().trim(),
       };
   
       // Send the POST request.
