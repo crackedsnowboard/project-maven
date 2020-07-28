@@ -19,11 +19,15 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+
 // ======================== Joel's work area =========================
 // Import routes and give the server access to them.
 // var routes = require("./controllers/mavenController.js");
 require("./routes/html-routes.js")(app);
-
+require("./routes/goals-api-routes.js")(app);
+require("./routes/subgoals-api-routes.js")(app);
+require("./routes/tasks-api-routes.js")(app);
+require("./routes/user-api-routes.js")(app)
 
 // ======================== Joel's work area =========================
 

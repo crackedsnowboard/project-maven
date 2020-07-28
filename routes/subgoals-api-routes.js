@@ -27,6 +27,17 @@ module.exports = function(app) {
     });
   });
 
+  app.put("/api/subgoals", function(req, res) {
+    db.Subgoals.update(req.body,
+      {
+          where: {
+              id: req.body.id
+          }
+      }).then(function(dbSubgoals) {
+          res.json(dbSubgoals);
+      });
+});
+
   app.delete("/api/subgoals/:id", function(req, res) {
     // Delete the Subgoal with the id available to us in req.params.id
     db.Subgoals.destroy({
