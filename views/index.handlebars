@@ -1,3 +1,17 @@
+{{!-- Nav Bar --}}
+<nav>
+  <div class="nav-wrapper">
+      <a href="#" class="brand-logo left">Logo</a>
+      <ul id="nav-mobile" class="right">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+    
+      </ul>
+    </div>
+</nav>
+<div class="container">
+{{!-- Main --}}
 <h1>Goals</h1>
 
 <h2>list of all goals (for testing purposes)</h2>
@@ -8,13 +22,13 @@
   {{/each}}
 </ul>
 
-<h2>list of all sub goals (for testing purposes)</h2>
+{{!-- <h2>list of all sub goals (for testing purposes)</h2>
 
 <ul>
   {{#each subGoals}}
       {{> subGoals/subGoal-block}}
   {{/each}}
-</ul>
+</ul> --}}
 
 <h2>Add a goal</h2>
 <form class="goal-form">
@@ -24,26 +38,26 @@
     <input type="text" id="goa" name="name">
   </div>
 
-  <button type="submit">Add Goal</button>
+  <a class="waves-effect waves-light btn" type="submit">Add Goal</a>
 </form>
 
-<h2>Add a sub goal</h2>
-<form class="subgoal-form">
+
+{{!-- <form class="subgoal-form">
 
   <div class="form-group">
     <label for="subgoa">New Sub Goal Name:</label>
-    <input type="text" id="subgoa-name" name="name">
-    <label for="subgoa">New Sub Goal GoalID:</label>
-    <input type="text" id="subgoa-id" name="id">
-  </div>
+    <input type="text" id="subgoa-name" name="name"> --}}
+    {{!-- <label for="subgoa">New Sub Goal GoalID:</label>
+    <input type="text" id="subgoa-id" name="id"> --}}
+  {{!-- </div>
 
   <button type="submit">Add Sub Goal</button>
-</form>
+</form> --}}
 
 
 
 {{!-- //   ======================== Colin's WORK AREA ==================÷ --}}
-<br><br><br><br><br>
+{{!-- <br><br><br><br><br>
 <h2>Add a goal</h2>
 <form class="goal-form">
 
@@ -54,6 +68,7 @@
 
   <button type="submitGoal">Add Goal</button>
 </form>
+</div> --}}
 
 {{!-- <h2>Add a sub goal</h2>
 <form class="subgoal-form">
@@ -66,7 +81,7 @@
   </div>
 
   <button type="submit">Add Sub Goal</button>
-</form> --}}
+</form> 
 
 
 {{!-- // ============================================================================ --}}
