@@ -1,5 +1,5 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(function() {
+$(document).ready(function() {
   
     $(".goal-form").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
@@ -56,6 +56,12 @@ $(".subGoal").on("click", function (event) {
   var id = this.id;
   console.log("if this works, i hate everything " + id);
 })
+
+
+ // Runs the carousel function - Materialize Method
+$('#demo-carousel').carousel();
+
+
 
 // ======================  =================// 
 
