@@ -4,7 +4,8 @@ var sequelize = require("sequelize");
 var router = express.Router();
 
 // Import the model (cat.js) to use its database functions.
-var db = require("../models/maven.js");
+var db = require("../models");
+console.log(db);
 
 // console.log(db.SubGoals.findAll().then(function(data){console.log(data)}));
 // Create all our routes and set up logic within those routes where required.
@@ -13,12 +14,12 @@ var db = require("../models/maven.js");
 router.get("/", function (req, res) {
     db.Goals.findAll().then(function (data) {
         var goals = data;
-        db.SubGoals.findAll().then(function (data) {
-            var allGoalsAndSubGoals = {
+        db.Subgoals.findAll().then(function (data) {
+            var allGoalsAndSubgoals = {
                 goals: goals,
                 subGoals: data
             };
-            res.render("index", allGoalsAndSubGoals);
+            res.render("index", allGoalsAndSubgoals);
         })
     });
 });
@@ -33,9 +34,9 @@ router.post("/api/goals", function (req, res) {
 
 // (for testing purposes) add a new sub goal
 router.post("/api/subgoals", function (req, res) {
-    db.SubGoals.create({
-        "subGoalName": req.body.subGoalName,
-        "goalID": req.body.goalID
+    db.Subgoals.create({
+        "name": req.body.name,
+        "GoalId": req.body.GoalId
     })
     .then(function(result) {
         res.json({ id: result.insertID });

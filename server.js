@@ -19,13 +19,28 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+
+// ======================== Joel's work area =========================
 // Import routes and give the server access to them.
-var routes = require("./controllers/mavenController.js");
+// var routes = require("./controllers/mavenController.js");
+require("./routes/html-routes.js")(app);
+require("./routes/goals-api-routes.js")(app);
+require("./routes/subgoals-api-routes.js")(app);
+require("./routes/tasks-api-routes.js")(app);
+require("./routes/user-api-routes.js")(app)
+
+// ======================== Joel's work area =========================
+
+
+// Requiring our models for syncing
+const db = require("./models");
 
 app.use(routes);
 
 // Starts the server to begin listening
 // =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
