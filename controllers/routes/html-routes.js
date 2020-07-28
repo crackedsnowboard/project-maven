@@ -1,26 +1,39 @@
 // html-routes.js - this file offers a set of routes for sending users to the various html pages
 // *********************************************************************************
 
+var db = require("../../models");
+
 // Dependencies
 var path = require("path");
 
 // Routes
 // =============================================================
 
-module.exports = function(app) {
+module.exports = function (app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // index route loads view.html
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/index.handlebars"));
+  app.get("/", function (req, res) {
+    // below is a reference, making 
+
+    db.Goals.findAll().then(function (data) {
+      var goals = data;
+      db.Subgoals.findAll().then(function (data) {
+        var allGoalsAndSubgoals = {
+          goals: goals,
+          subGoals: data
+        };
+        res.render("index", allGoalsAndSubgoals);
+      })
+    });
   });
 
 
   // Second webpage - will we have a second index2.handlebars page?
   // second route loads /second.html or 
-  app.get("/second", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/second.handlebars"));
+  app.get("/second", function (req, res) {
+    res.sendFile(path.join(__dirname, "../../views/second.handlebars"));
   });
 
   // // blog route loads blog.html
