@@ -27,8 +27,8 @@ $(function() {
         event.preventDefault();
     
         var newSubGoal = {
-          subGoalName: $("#subgoa-name").val().trim(),
-          referenceGoalID: $("#subgoa-id").val().trim()
+          name: $("#subgoa-name").val().trim(),
+          GoalId: $("#subgoa-id").val().trim()
         };
     
         // Send the POST request.
