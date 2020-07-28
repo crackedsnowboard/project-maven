@@ -20,7 +20,7 @@ module.exports = function(app) {
   // Second webpage - will we have a second index2.handlebars page?
   // second route loads /second.html or 
   app.get("/second", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/index2.handlebars"));
+    res.sendFile(path.join(__dirname, "../views/second.handlebars"));
   });
 
   // // blog route loads blog.html
