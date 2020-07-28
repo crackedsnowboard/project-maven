@@ -7,6 +7,7 @@ $(document).ready(function() {
   
       var newGoal = {
         name: $("#goa").val().trim(),
+        UserId: 1
       };
   
       // Send the POST request.
@@ -38,6 +39,28 @@ $(document).ready(function() {
         }).then(
           function() {
             console.log("created a new sub goal");
+            // Reload the page to get the updated list
+            location.reload();
+          }
+        );
+      });
+
+      $(".user-form").on("submit", function(event) {
+        // Make sure to preventDefault on a submit event.
+        event.preventDefault();
+    
+        var newUser = {
+          name: $("#use-name").val().trim(),
+          username: $("#use-username").val().trim()
+        };
+    
+        // Send the POST request.
+        $.ajax("/api/users", {
+          type: "POST",
+          data: newUser
+        }).then(
+          function() {
+            console.log("created a new user");
             // Reload the page to get the updated list
             location.reload();
           }

@@ -24,7 +24,7 @@ module.exports = function(app) {
     console.log(req.body);
     db.Goals.create({
       "name": req.body.name,
-      "UserId": req.body.id
+      "UserId": req.body.UserId
     }).then(function(dbGoals) {
       res.json(dbGoals);
     });

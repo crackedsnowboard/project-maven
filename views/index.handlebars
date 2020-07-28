@@ -11,6 +11,20 @@
     </div>
 </nav>
 
+
+<h2>Add a user</h2>
+<form class="user-form">
+
+  <div class="form-group">
+    <label for="use-name">New User Name:</label>
+    <input type="text" id="use-name" name="name">
+    <label for="use-username">New User Username:</label>
+    <input type="text" id="use-username" name="name">
+  </div>
+{{!-- <a class="waves-effect waves-light btn"></a> --}}
+  <button type="submit">Add User</button>
+</form>
+
 {{!-- Main --}}
 <div class="container">
   <h1>Goals</h1>
@@ -18,7 +32,7 @@
   {{!-- <h2>list of all goals (for testing purposes)</h2> --}}
  <div class="row">
   <ul>
-    {{#each goals}}
+    {{#each Goals}}
         {{> goals/goal-block}}
     {{/each}}
  </ul>
