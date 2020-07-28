@@ -19,8 +19,14 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// ======================== Joel's work area =========================
 // Import routes and give the server access to them.
-var routes = require("./controllers/mavenController.js");
+// var routes = require("./controllers/mavenController.js");
+require("./routes/html-routes.js")(app);
+
+
+// ======================== Joel's work area =========================
+
 
 // Requiring our models for syncing
 const db = require("./models");
