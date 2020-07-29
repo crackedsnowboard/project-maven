@@ -18,7 +18,7 @@ module.exports = function (app) {
 
     db.Goals.findAll({
       include: "Subgoals",
-      raw: true,
+      // raw: true,
       where: {
         UserId: 1
       }

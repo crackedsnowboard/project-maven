@@ -11,6 +11,21 @@
     </div>
 </nav>
 
+{{!-- <div class="add-subgoal-container">
+  <h1>Add A New Subgoal</h1>
+  <a href="" class="add-subgoal-button">Add New Subgoal</a>
+</div> --}}
+
+
+
+<div class="popup">
+  <div class="popup-content">
+    <button class="close">X</button>
+    <p class="subgoal-message">Enter the name of your subgoal below</p>
+    <input type="text" id="new-subgoa">
+    <button class="submit-subgoal-button">Add Subgoal</button>
+  </div>
+</div>
 
 <h2>Add a user</h2>
 <form class="user-form">
@@ -24,6 +39,7 @@
 {{!-- <a class="waves-effect waves-light btn"></a> --}}
   <button type="submit">Add User</button>
 </form>
+
 
 {{!-- Main --}}
 <div class="container">
@@ -54,11 +70,11 @@
 {{!-- 
 <h2>list of all sub goals (for testing purposes)</h2> --}}
 
-<ul>
+{{!-- <ul>
   {{#each subGoals}}
       {{> subGoals/subGoal-block}}
   {{/each}}
-</ul>
+</ul> --}}
 
 
 {{!-- This functionality works! However, when I change the button to the materialze btn, function gets weird (loses name) --}}

@@ -39,21 +39,24 @@
       <div class="card blue-grey darken-1">
 
         <div class="card-content white-text"> 
-		      <span class="card-title" id='{{{id}}}' data-id="{{{id}}}" data-parent="{{{name}}}">
-            <button class="goal-card-button">{{{name}}}</button>
+		      <span class="card-title" id='{{{dataValues.id}}}' data-id="{{{dataValues.id}}}" data-parent="{{{dataValues.name}}}">
+            <button class="goal-card-button">{{{dataValues.name}}}</button>
           </span>
         </div>
 
-          <div class="card-action">
+          {{!-- <div class="card-action">
             <a href="#">This is a link</a>
             <a href="#">This is a link</a>
-          </div>
+          </div> --}}
 
+          <h5>Sub Goals:</h5>
           <ul>
             {{#each Subgoals}}
               {{> subGoals/subGoal-block}}
             {{/each}}
           </ul>
+
+          <button class="add-subgoal-button" data-reference-goal-id="{{{dataValues.id}}}">Add A New Subgoal</button>
           
       </div>
     </div>

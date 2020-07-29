@@ -1,6 +1,42 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(document).ready(function () {
 
+  var goalId;
+
+  // ====================== Sam's Work Station =================// 
+
+  // on click listeners for controlling the display of the "add new subgoal" pop-up form
+  $(".add-subgoal-button").on("click", function (event) {
+    goalId = $(this).attr("data-reference-goal-id");
+    $(".popup").css("display", "flex");
+    console.log(goalId);
+  })
+
+  $(".submit-subgoal-button").on("click", function (event) {
+    $(".popup").css("display", "none");
+    var newSubGoal = {
+      name: $("#new-subgoa").val().trim(),
+      GoalId: goalId
+    }
+    $.ajax("/api/subgoals", {
+      type: "POST",
+      data: newSubGoal
+    }).then(
+      function () {
+        console.log("created a new subgoal with the subgoal popup form");
+        $("#new-subgoa").val("");
+        location.reload();
+      }
+    )
+  })
+
+  $(".close").on("click", function (event) {
+    $(".popup").css("display", "none");
+    $("#new-subgoa").val("");
+  })
+
+  // on click listeners for adding a new subgoal to the database from the goal card on the homepage
+
   // buttons on goal cards for getting to second page
   // html-routes 
   $(".goal-card-button").on("click", function (event) {
@@ -8,6 +44,7 @@ $(document).ready(function () {
       type: "GET"
     }).then(function (res) {
       console.log("on second page");
+      location.assign("/second");
     })
   })
 
