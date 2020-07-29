@@ -10,10 +10,12 @@ $(document).ready(function () {
 
   $(".submit-subgoal-button").on("click", function (event) {
     $(".popup").css("display", "none");
+    $("#new-subgoa").val("");
   })
 
   $(".close").on("click", function (event) {
     $(".popup").css("display", "none");
+    $("#new-subgoa").val("");
   })
 
   // buttons on goal cards for getting to second page
