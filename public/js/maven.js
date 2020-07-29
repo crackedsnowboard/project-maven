@@ -134,7 +134,7 @@ $(document).ready(function () {
       stopTime: 20,
       comments: $('.comments').val().trim(),
       emoji: 1,
-      SubgoalId: 1,
+      SubgoalId: 15,
     };
 
     $.ajax("/api/tasks", {

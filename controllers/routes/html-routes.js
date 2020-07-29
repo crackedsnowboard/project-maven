@@ -31,6 +31,7 @@ module.exports = function (app) {
     });
   });
 
+  //  ================ Colin's Work Space ================
 
   // Second webpage - will we have a second index2.handlebars page?
   // second route loads /second.html or 
@@ -39,8 +40,16 @@ module.exports = function (app) {
     // res.sendFile(path.join(__dirname, "../../second.html"));
     db.Subgoals.findAll({
       raw: true,
-      include: db.Goals, where: { Goalid: 1 },
-      indluce: db.Tasks, where: { }
+      include: [
+        {
+          model: db.Goals, 
+          where: {UserId: 1}
+        },
+        {
+          model: db.Tasks, 
+          where: {SubgoalId: 15}
+        },
+      ]
     }).then(function (data) {
       console.log(data);
       handleBarsData = {
@@ -59,5 +68,7 @@ module.exports = function (app) {
   //   res.sendFile(path.join(__dirname, "../public/author-manager.html"));
   // });
 
+
+  //  ================ Colin's Work Space ================
 };
 
