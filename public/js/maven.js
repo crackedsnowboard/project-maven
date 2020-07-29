@@ -1,13 +1,29 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(document).ready(function () {
 
+  // ====================== Sam's Work Station =================// 
+
+  // on click listeners for adding a new subgoal from the goal card on the homepage
+  $(".add-subgoal-button").on("click", function (event) {
+    $(".popup").css("display", "flex");
+  })
+
+  $(".submit-subgoal-button").on("click", function (event) {
+    $(".popup").css("display", "none");
+  })
+
+  $(".close").on("click", function (event) {
+    $(".popup").css("display", "none");
+  })
+
   // buttons on goal cards for getting to second page
   // html-routes 
   $(".goal-card-button").on("click", function (event) {
     $.ajax("/second", {
       type: "GET"
-    }).then(function(res) {
+    }).then(function (res) {
       console.log("on second page");
+      location.assign("/second");
     })
   })
 

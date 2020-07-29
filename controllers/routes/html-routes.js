@@ -48,7 +48,7 @@ module.exports = function (app) {
       handleBarsData = {
         Goals: data,
       }
-      res.render("second");
+      res.render("second", handleBarsData);
     });
   });
 
