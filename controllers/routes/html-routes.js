@@ -40,6 +40,9 @@ module.exports = function (app) {
     // res.sendFile(path.join(__dirname, "../../second.html"));
     db.Subgoals.findAll({
       raw: true,
+      where: {
+        id: 15
+      },
       include: [
         {
           model: db.Goals, 
