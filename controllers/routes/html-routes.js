@@ -13,20 +13,21 @@ module.exports = function (app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  // index route loads view.html
+  // index route loads the main page in index.handlebars
   app.get("/", function (req, res) {
-    // below is a reference, making 
 
-    db.Goals.findAll().then(function (data) {
-      var goals = data;
-      db.Subgoals.findAll().then(function (data) {
-        var allGoalsAndSubgoals = {
-          goals: goals,
-          subGoals: data
-        };
-        res.render("index", allGoalsAndSubgoals);
-      })
-      
+    db.Goals.findAll({
+      include: "Subgoals",
+      raw: true,
+      where: {
+        UserId: 1
+      }
+    }).then(function (data) {
+      console.log(data);
+      handleBarsData = {
+        Goals: data,
+      }
+      res.render("index", handleBarsData);
     });
   });
 
@@ -34,7 +35,21 @@ module.exports = function (app) {
   // Second webpage - will we have a second index2.handlebars page?
   // second route loads /second.html or 
   app.get("/second", function (req, res) {
-    res.sendFile(path.join(__dirname, "../../views/second.handlebars"));
+    console.log("hit route")
+    // res.sendFile(path.join(__dirname, "../../second.html"));
+    db.Goals.findAll({
+      include: "Subgoals",
+      raw: true,
+      where: {
+        UserId: 1
+      }
+    }).then(function (data) {
+      console.log(data);
+      handleBarsData = {
+        Goals: data,
+      }
+      res.render("second");
+    });
   });
 
   // // blog route loads blog.html
