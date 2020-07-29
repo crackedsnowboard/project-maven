@@ -37,18 +37,16 @@ module.exports = function (app) {
   app.get("/second", function (req, res) {
     console.log("hit route")
     // res.sendFile(path.join(__dirname, "../../second.html"));
-    db.Goals.findAll({
-      include: "Subgoals",
+    db.Subgoals.findAll({
       raw: true,
-      where: {
-        UserId: 1
-      }
+      include: db.Goals, where: { Goalid: 1 },
+      indluce: db.Tasks, where: { }
     }).then(function (data) {
       console.log(data);
       handleBarsData = {
-        Goals: data,
+        Subgoals: data,
       }
-      res.render("second");
+      res.render("second", handleBarsData);
     });
   });
 

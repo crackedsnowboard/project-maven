@@ -6,7 +6,7 @@ $(document).ready(function () {
   $(".goal-card-button").on("click", function (event) {
     $.ajax("/second", {
       type: "GET"
-    }).then(function(res) {
+    }).then(function (res) {
       console.log("on second page");
     })
   })
@@ -33,27 +33,27 @@ $(document).ready(function () {
     );
   });
 
-  $(".subgoal-form").on("submit", function (event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
+  // $(".subgoal-form").on("submit", function (event) {
+  //   // Make sure to preventDefault on a submit event.
+  //   event.preventDefault();
 
-    var newSubGoal = {
-      name: $("#subgoa-name").val().trim(),
-      GoalId: $("#subgoa-id").val().trim()
-    };
+  //   var newSubGoal = {
+  //     name: $("#subgoa-name").val().trim(),
+  //     GoalId: $(this).data('id'),
+  //   };
 
-    // Send the POST request.
-    $.ajax("/api/subgoals", {
-      type: "POST",
-      data: newSubGoal
-    }).then(
-      function () {
-        console.log("created a new sub goal");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
+  //   // Send the POST request.
+  //   $.ajax("/api/subgoals", {
+  //     type: "POST",
+  //     data: newSubGoal
+  //   }).then(
+  //     function () {
+  //       console.log("created a new sub goal");
+  //       // Reload the page to get the updated list
+  //       location.reload();
+  //     }
+  //   );
+  // });
 
   $(".user-form").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
@@ -72,7 +72,7 @@ $(document).ready(function () {
       function () {
         console.log("created a new user");
         // Reload the page to get the updated list
-        location.reload();
+        // location.reload();
       }
     );
   });
@@ -94,7 +94,60 @@ $(document).ready(function () {
   // Runs the carousel function - Materialize Method
   $('#demo-carousel').carousel();
 
+  // =========
 
+
+  $(".subclass-btn").on("click", function (event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+    // function createSubGoal () {
+    console.log("called");
+    var newSubGoal = {
+      name: $(".subgoa-name").val().trim(),
+      //this needs to be edited to grab parent(goal) ID
+      GoalId: 1,
+
+    };
+    console.log(newSubGoal.name);
+    console.log(newSubGoal.GoalId);
+
+    // Send the POST request.
+    $.ajax("/api/subgoals", {
+      type: "POST",
+      data: newSubGoal
+    }).then(
+      function () {
+        console.log("created a new sub goal");
+        // Reload the page to get the updated list
+        // location.reload();
+
+      }
+    );
+  });
+
+  $('.task-submit').on('click', (event) => {
+    console.log("submit was clicked");
+    event.preventDefault();
+    // ALL of this will need to be updated !! 
+    var newTask = {
+      startTime: 10,
+      stopTime: 20,
+      comments: $('.comments').val().trim(),
+      emoji: 1,
+      SubgoalId: 1,
+    };
+
+    $.ajax("/api/tasks", {
+      type: "POST",
+      data: newTask
+    }).then(
+      function () {
+        console.log("created a new task");
+        // Reload the page to get the updated list
+        // location.reload();
+      }
+    );
+  });
 
   // ======================  =================// 
 
