@@ -27,7 +27,7 @@ module.exports = function (app) {
       handleBarsData = {
         Goals: data,
       }
-      res.render("index", handleBarsData);      
+      res.render("index", handleBarsData);
     });
   });
 
@@ -35,7 +35,21 @@ module.exports = function (app) {
   // Second webpage - will we have a second index2.handlebars page?
   // second route loads /second.html or 
   app.get("/second", function (req, res) {
-    res.sendFile(path.join(__dirname, "../../views/second.handlebars"));
+    console.log("hit route")
+    // res.sendFile(path.join(__dirname, "../../second.html"));
+    db.Goals.findAll({
+      include: "Subgoals",
+      raw: true,
+      where: {
+        UserId: 1
+      }
+    }).then(function (data) {
+      console.log(data);
+      handleBarsData = {
+        Goals: data,
+      }
+      res.render("second");
+    });
   });
 
   // // blog route loads blog.html
