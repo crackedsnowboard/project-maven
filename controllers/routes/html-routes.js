@@ -18,7 +18,7 @@ module.exports = function (app) {
 
     db.Goals.findAll({
       include: "Subgoals",
-      raw: true,
+      // raw: true,
       where: {
         UserId: 1
       }
@@ -39,7 +39,7 @@ module.exports = function (app) {
     // res.sendFile(path.join(__dirname, "../../second.html"));
     db.Goals.findAll({
       include: "Subgoals",
-      raw: true,
+      // raw: true,
       where: {
         UserId: 1
       }
