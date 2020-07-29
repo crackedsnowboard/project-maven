@@ -20,9 +20,18 @@ module.exports = function(app) {
   });
 
   app.post("/api/tasks", function(req, res) {
+    console.log("post was hit");
+    console.log(req.body);
     // Create a Task with the data available to us in req.body
     console.log(req.body);
-    db.Tasks.create(req.body).then(function(dbTasks) {
+    db.Tasks.create({    
+      "startTime": req.body.startTime,
+      "stopTime": req.body.stopTime,
+      "comments": req.body.comments,
+      "emoji": req.body.emoji,
+      "SubgoalId": req.body.SubgoalId,
+
+    }).then(function(dbTasks) {
       res.json(dbTasks);
     });
   });
