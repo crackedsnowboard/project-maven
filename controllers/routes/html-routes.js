@@ -39,7 +39,7 @@ module.exports = function (app) {
     console.log("hit route")
     // res.sendFile(path.join(__dirname, "../../second.html"));
     db.Subgoals.findAll({
-      raw: true,
+      // raw: true,
       where: {
         id: 15
       },

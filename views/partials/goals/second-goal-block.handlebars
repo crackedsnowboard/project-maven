@@ -3,18 +3,18 @@
     <div class="card blue-grey darken-1">
 
       <div class="card-content white-text">
-        <span class="card-title" id='{{{id}}}' data-id="{{{id}}}" data-parent="{{{name}}}">
-          <p>{{{name}}}</p>
+        <span class="card-title" id='{{{id}}}' data-id="{{{id}}}" data-parent="{{{dataValues.name}}}">
+          <p>{{{dataValues.name}}}</p>
         </span>
       </div>
 
       <div class="container">
         <h5>Comments:</h5>
         <ul>
-          <li>
-            {{{'Tasks.comments'}}}, {{{'Tasks.emoji'}}}
-          </li>
-          <ul>
+            {{#each Tasks}}
+              {{> tasks/task-block}}
+            {{/each}}
+        </ul>
             {{!-- <ul>
           <li>
             {{#each 'Tasks.comments'}}
