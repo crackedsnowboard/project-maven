@@ -117,23 +117,52 @@ $(document).ready(function () {
 
   // ====================== Colin's Work Station =================// 
 
-  // For whatever button that is clicked, this will respond with the buttons' id
+  // For whatever button with class 'subGoal that is clicked 
+  // this will respond with the buttons' id
   $(".subGoal").on("click", function (event) {
     console.log("subGoal clicked");
     console.log("id = " + this.id);
     // console.log("data-id = " + $(this.data('id')));
-
     var id = this.id;
     console.log("if this works, i hate everything " + id);
   })
+
+  // on click listeners for controlling the display of the "add new comment" pop-up form
+  $(".add-comment-button").on("click", function (event) {
+    SubgoalId = $(this).attr("data-reference-goal-id");
+    console.log(SubgoalId);
+    $(".popup").css("display", "flex");
+
+  })
+
+  // collects info from comment pop up and sends ajax call 
+  $(".submit-comment-button").on("click", function (event) {
+    $(".popup").css("display", "none");
+    var newComment = {
+      startTime: 0,
+      stopTime: 0,
+      comments: $("#new-comment").val().trim(),
+      emoji: 1,
+      SubgoalId: SubgoalId,
+    }
+    $.ajax("/api/tasks", {
+      type: "POST",
+      data: newComment
+    }).then(
+      function () {
+        console.log("created a new comment with the comment popup form");
+        $("#new-comment").val("");
+        location.reload();
+      }
+    )
+  })
+
 
 
   // Runs the carousel function - Materialize Method
   $('#demo-carousel').carousel();
 
-  // =========
-
-
+  // NEW SUB GOAL BTN
   $(".subclass-btn").on("click", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
@@ -141,8 +170,11 @@ $(document).ready(function () {
     console.log("called");
     var newSubGoal = {
       name: $(".subgoa-name").val().trim(),
+
+      // IMPORTANT !!!!!! 
       //this needs to be edited to grab parent(goal) ID
       GoalId: 1,
+      // IMPORTANT !!!!!!   
 
     };
     console.log(newSubGoal.name);
@@ -155,13 +187,16 @@ $(document).ready(function () {
     }).then(
       function () {
         console.log("created a new sub goal");
+        $(".subgoa-name").val("");
         // Reload the page to get the updated list
-        // location.reload();
+        location.reload();
+        console.log("location reloaded");
 
       }
     );
   });
 
+  // Task Create function - Currently commented out on second.hbr
   $('.task-submit').on('click', (event) => {
     console.log("submit was clicked");
     event.preventDefault();
