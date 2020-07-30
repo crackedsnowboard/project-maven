@@ -56,11 +56,20 @@
       {{> goals/second-goal-block}}
       {{/each}}
     </ul>
-
   </div>
 
-  <h2>Testing Space</h2>
-  <p>{{dataValues.id}}</p>
+  <h4>New Sub Goal</h4>
+  <form class="subgoal-form">
+    <div class="form-group">
+      <label for="subgoa">Name:</label>
+      <input type="text" class="subgoa-name" name="name" data-id="{{{id}}}">
+      {{!-- <label for="subgoa">New Sub Goal GoalID:</label>
+            <input type="text" id="subgoa-id" name="id"> --}}
+    </div>
+      <button type="submit" class="subclass-btn">Add Sub Goal</button>
+  </form>
+
+
 
   {{!-- Carousel to put cards into? --}}
   <div class="carousel" id="demo-carousel">
@@ -84,7 +93,7 @@
 
 
   {{!-- This functionality works! However, when I change the button to the materialze btn, function gets weird (loses name) --}}
-  <h2>Add a goal</h2>
+  <h5>Add a goal</h5>
   <form class="goal-form">
 
     <div class="form-group">
@@ -95,19 +104,8 @@
     <button type="submit">Add Goal</button>
   </form>
 
-  <h2>Add a Subgoal</h2>
-  <form class="subgoal-form">
-    <div class="form-group">
-      <label for="subgoa">New Sub Goal Name:</label>
-      <input type="text" class="subgoa-name" name="name" data-id="{{{id}}}">
-      {{!-- <label for="subgoa">New Sub Goal GoalID:</label>
-            <input type="text" id="subgoa-id" name="id"> --}}
-    </div>
 
-    <button type="submit" class="subclass-btn">Add Sub Goal</button>
-  </form>
-
-  <h2>Add a Task</h2>
+  <h5>Add a Task</h5>
   <form class="subgoal-form">
     <div class="form-group">
       <label for="comments">New Comment:</label>

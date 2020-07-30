@@ -127,7 +127,7 @@ $(document).ready(function () {
     console.log("if this works, i hate everything " + id);
   })
 
- // on click listeners for controlling the display of the "add new subgoal" pop-up form
+ // on click listeners for controlling the display of the "add new comment" pop-up form
  $(".add-comment-button").on("click", function (event) {
   SubgoalId = $(this).attr("data-reference-goal-id");
   console.log(SubgoalId);
@@ -135,6 +135,7 @@ $(document).ready(function () {
  
 })
 
+// collects info from comment pop up and sends ajax call 
   $(".submit-comment-button").on("click", function (event) {
     $(".popup").css("display", "none");
     var newComment = {
@@ -171,8 +172,11 @@ $(document).ready(function () {
     console.log("called");
     var newSubGoal = {
       name: $(".subgoa-name").val().trim(),
+
+      // IMPORTANT !!!!!! 
       //this needs to be edited to grab parent(goal) ID
       GoalId: 1,
+      // IMPORTANT !!!!!!   
 
     };
     console.log(newSubGoal.name);
@@ -185,8 +189,10 @@ $(document).ready(function () {
     }).then(
       function () {
         console.log("created a new sub goal");
+        $(".subgoa-name").val("");
         // Reload the page to get the updated list
-        // location.reload();
+        location.reload();
+        console.log("location reloaded");
 
       }
     );
