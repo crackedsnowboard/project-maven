@@ -41,16 +41,14 @@ module.exports = function (app) {
     db.Subgoals.findAll({
       // raw: true,
       where: {
-        id: 15
+        GoalId: 1,
       },
       include: [
         {
           model: db.Goals, 
-          where: {UserId: 1}
         },
         {
           model: db.Tasks, 
-          where: {SubgoalId: 15}
         },
       ]
     }).then(function (data) {

@@ -29,10 +29,24 @@
 
 <div class="container">
   {{!-- Needs to only be once --}}
- 
-  <h1>{{Goal.name}}</h1>
-  
-    
+
+<div class="popup">
+  <div class="popup-content">
+    <button class="close">X</button>
+    <p class="task-message">Create a New Comment:</p>
+    <input type="text" id="new-comment">
+    <button class="submit-comment-button">Add Comment</button>
+  </div>
+</div>
+
+
+  <h1>Goal Name Goes Here: {{dataValues.name}}</h1>
+
+  <ul>
+    {{#each Subgoals}}
+    {{> subGoals/subGoal-second-block}}
+    {{/each}}
+  </ul>
 
 
   {{!-- <h2>list of all goals (for testing purposes)</h2> --}}
@@ -43,9 +57,11 @@
       {{/each}}
     </ul>
 
-
-
   </div>
+
+  <h2>Testing Space</h2>
+  <p>{{dataValues.id}}</p>
+
   {{!-- Carousel to put cards into? --}}
   <div class="carousel" id="demo-carousel">
 
@@ -91,12 +107,12 @@
     <button type="submit" class="subclass-btn">Add Sub Goal</button>
   </form>
 
-   <h2>Add a Task</h2>
+  <h2>Add a Task</h2>
   <form class="subgoal-form">
     <div class="form-group">
       <label for="comments">New Comment:</label>
       <input type="text" class="comments" data-id="{{{id}}}">
     </div>
 
-    <button type="submit"  class="task-submit">Submit</button>
+    <button type="submit" class="task-submit">Submit</button>
   </form>

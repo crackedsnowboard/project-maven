@@ -11,22 +11,24 @@
       <div class="container">
         <h5>Comments:</h5>
         <ul>
-            {{#each Tasks}}
-              {{> tasks/task-block}}
-            {{/each}}
+          {{#each Tasks}}
+          {{> tasks/task-block}}
+          {{/each}}
         </ul>
-            {{!-- <ul>
+        {{!-- <ul>
           <li>
             {{#each 'Tasks.comments'}}
           </li>
           <ul> --}}
+            <br><br>
 
-
+        <button class="add-comment-button" data-reference-goal-id="{{{dataValues.id}}}">Add A New Comment</button>
       </div>
-      <div class="card-action">
+
+      {{!-- <div class="card-action">
         <a href="#">This is a link</a>
         <a href="#">This is a link</a>
-      </div>
+      </div> --}}
 
     </div>
   </div>

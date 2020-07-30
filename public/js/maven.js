@@ -127,11 +127,41 @@ $(document).ready(function () {
     console.log("if this works, i hate everything " + id);
   })
 
+ // on click listeners for controlling the display of the "add new subgoal" pop-up form
+ $(".add-comment-button").on("click", function (event) {
+  SubgoalId = $(this).attr("data-reference-goal-id");
+  console.log(SubgoalId);
+  $(".popup").css("display", "flex");
+ 
+})
+
+  $(".submit-comment-button").on("click", function (event) {
+    $(".popup").css("display", "none");
+    var newComment = {
+      startTime: 0,
+      stopTime: 0,
+      comments: $("#new-comment").val().trim(),
+      emoji: 1,
+      SubgoalId: SubgoalId,
+    }
+    $.ajax("/api/tasks", {
+      type: "POST",
+      data: newComment
+    }).then(
+      function () {
+        console.log("created a new comment with the comment popup form");
+        $("#new-comment").val("");
+        location.reload();
+      }
+    )
+  })
+
+  
 
   // Runs the carousel function - Materialize Method
   $('#demo-carousel').carousel();
 
-  // =========
+  // =====================================
 
 
   $(".subclass-btn").on("click", function (event) {
