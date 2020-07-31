@@ -43,11 +43,14 @@ $(document).ready(function () {
   // buttons on goal cards for getting to second page
   // html-routes 
   $(".goal-card-button").on("click", function (event) {
-    $.ajax("/second", {
+    var id = $(this).attr("id");
+    console.log("gc clicked; id = " + id)
+
+    $.ajax("/second/" + id, {
       type: "GET"
     }).then(function (res) {
       console.log("on second page");
-      location.assign("/second");
+      location.assign("/second/" + id);
     })
   })
 
@@ -313,5 +316,4 @@ $(document).ready(function () {
 
       })
   })
-
 });
