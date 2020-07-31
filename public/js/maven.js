@@ -4,7 +4,7 @@ $(document).ready(function () {
   var goalId;
   var taskId;
   var editId;
-  var editSubg;
+  var subgId;
 
   // ====================== Sam's Work Station =================// 
 
@@ -268,13 +268,13 @@ $(document).ready(function () {
     var editedComment = {
       comments: $("#edit-comment").val().trim(),
     }
-    console.log(editedComment.comments);
+
     $.ajax("/api/tasks/" + editId, {
       type: "PUT",
       data: editedComment
     }).then(
       function () {
-        console.log("created a new comment with the comment popup form" + editId);
+        console.log("edited an existing comment with id: " + editId);
         $("#new-comment").val("");
         location.reload();
       }
@@ -282,13 +282,32 @@ $(document).ready(function () {
   })
   // ==== Edit Comment Section ===// 
 
+
+
   // ==== Edit Subgoal Section ===// 
   $(".subgoal-edit-card-button").on("click", (event) => {
     console.log('edit Subg was clicked!');
-    editSubg = event.target.id;
-    console.log(editSubg);
+       $(".popup-edit-subgoals").css("display", "none");
+    subgId = event.target.id;
+    console.log(subgId);
 
-    $(".popup-edit-subgoals").css("display", "flex");
-  })
+    // Pop up to edit subgoal
+    $("edit-subgoal-button").css("display", "flex");
+    var editedSubgoal = {
+      name: $("#edit-subgoal").val().trim(),
+    }
+    
+    // $.ajax("/api/subgoals/" + subgId, {
+    //   type: "PUT",
+    //   data: editedSubgoal
+    // }).then (
+    //   function () {
+    //     console.log("edited an existing Subgoal with id: " + subgId);
+    //     $("#edit-subgoal").val("");
+        // location.reload();
+      
+      })
+
+  // })
 
 });
