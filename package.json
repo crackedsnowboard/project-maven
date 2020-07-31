@@ -22,6 +22,8 @@
     "chartist": "^0.11.4",
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
+    "firebase": "^7.17.1",
+    "firebaseui": "^4.6.1",
     "moment": "^2.27.0",
     "mysql2": "^2.1.0",
     "sequelize": "^6.3.3",
