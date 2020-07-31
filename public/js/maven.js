@@ -1,4 +1,5 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
+
 $(document).ready(function () {
 
   var goalId;
@@ -9,6 +10,7 @@ $(document).ready(function () {
   $(".timer-button").on("click", function (event) {
     if ($(this).hasClass("start-timer-button")) {
       $(this).html("Stop")
+      $(this).attr("start-time", JSON.stringify(moment()));
       $(this).removeClass("start-timer-button").addClass("stop-timer-button");
     } else {
       $(this).html("Start")

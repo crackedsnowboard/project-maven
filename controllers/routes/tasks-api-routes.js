@@ -19,6 +19,15 @@ module.exports = function(app) {
     });
   });
 
+  // returns a moment.js object
+  // if a time is passed in via req.timeString, return the moment.js object at that time
+  // otherwise, return the momenth.js object at the time that the request was made
+  app.get("/api/moment", function(req, res) {
+    if (req.timeString) {
+
+    }
+  })
+
   app.post("/api/tasks", function(req, res) {
     console.log("post was hit");
     console.log(req.body);
