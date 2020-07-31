@@ -17,8 +17,8 @@
         <ul>
           {{#each Tasks}}
           <h6 class="comment-text">{{> tasks/task-block}}</h6>
-           <button class="edit-comment" data-reference-goal-id="{{{dataValues.id}}}">Edit</button>
-           <button class="delete-comment" id="{{{dataValues.id}}}" data-reference-goal-id="{{{dataValues.id}}}">Delete</button>
+           <button class="edit-comment" id="{{{dataValues.id}}}" data-subgoal-id="{{{dataValues.SubgoalId}}}">Edit</button>
+           <button class="delete-comment" id="{{{dataValues.id}}}">Delete</button>
           {{/each}}
 
         </ul>

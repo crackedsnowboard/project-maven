@@ -25,6 +25,16 @@
     </div>
   </div>
 
+   {{!-- Popup window when 'add a new comment' is clicked --}}
+  <div class="popup-edit-comments">
+    <div class="popup-content">
+      <button class="close">X</button>
+      <p class="task-message">Edit Comment:</p>
+      <input type="text" id="edit-comment">
+      <button class="edit-comment-button">Submit</button>
+    </div>
+  </div>
+
   {{!-- This works!!! --}}
     <ul>
       {{#each Goals}}

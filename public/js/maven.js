@@ -3,6 +3,7 @@ $(document).ready(function () {
 
   var goalId;
   var taskId;
+  var editId;
 
   // ====================== Sam's Work Station =================// 
 
@@ -249,6 +250,37 @@ $(document).ready(function () {
       location.reload();
     })
   });
+
+  $('.edit-comment').on('click', (event) => {
+    console.log('edit comment was clicked!');
+    editId = event.target.id;
+    console.log(editId);
+    // WHY ISN'T THIS WORKING!!! 
+    // dataAttr = $(this).attr("data-subgoal-id");
+    // console.log(dataAttr);
+
+    $(".popup-edit-comments").css("display", "flex");  
+  })
+
+  // collects info from comment pop up and sends ajax call 
+  $(".edit-comment-button").on("click", function (event) {
+    console.log('edit id inside = ' + editId);
+    $(".popup").css("display", "none");
+    var editedComment = {
+      comments: $("#edit-comment").val().trim(),
+    }
+    console.log(editedComment.comments);
+    $.ajax("/api/tasks/" + editId, {
+      type: "PUT",
+      data: editedComment
+    }).then(
+      function () {
+        console.log("created a new comment with the comment popup form" + editId);
+        $("#new-comment").val("");
+        location.reload();
+      }
+    )
+  })
   // ======================  =================// 
 
 });
