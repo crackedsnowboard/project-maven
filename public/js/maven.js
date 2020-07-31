@@ -251,13 +251,11 @@ $(document).ready(function () {
     })
   });
 
+  // ===== Edit Comment Section ==== // 
   $('.edit-comment').on('click', (event) => {
     console.log('edit comment was clicked!');
     editId = event.target.id;
     console.log(editId);
-    // WHY ISN'T THIS WORKING!!! 
-    // dataAttr = $(this).attr("data-subgoal-id");
-    // console.log(dataAttr);
 
     $(".popup-edit-comments").css("display", "flex");  
   })
@@ -281,6 +279,6 @@ $(document).ready(function () {
       }
     )
   })
-  // ======================  =================// 
+  // ==== Edit Comment Section ===// 
 
 });
