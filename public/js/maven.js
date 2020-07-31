@@ -242,6 +242,12 @@ $(document).ready(function () {
     console.log('delete subg was clicked!');
     subgId = event.target.id;
     console.log(subgId);
+    $.ajax("api/subgoals/" + subgId, {
+      type: "DELETE"
+    }).then( () => {
+      console.log("delete subg with id = ", subgId);
+      location.reload();
+    })
   });
   // ======================  =================// 
 
