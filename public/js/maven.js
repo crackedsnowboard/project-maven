@@ -5,19 +5,69 @@ $(document).ready(function () {
   var goalId;
   var taskId;
   var editId;
+  var stopButtonJustClicked;
+  var currentButton;
 
   // ====================== Sam's Work Station =================// 
 
+
   // on click listener for when a start timer button is clicked next to subgoal
   $(".timer-button").on("click", function (event) {
-    if ($(this).hasClass("start-timer-button")) {
-      $(this).html("Stop")
-      $(this).attr("start-time", JSON.stringify(moment()));
-      $(this).removeClass("start-timer-button").addClass("stop-timer-button");
+    currentButton = $(this);
+    if (currentButton.hasClass("start-timer-button")) {
+      // change text in button to say "Stop"
+      currentButton.html("Stop")
+      console.log(currentButton.html());
+      // indicate that this is now a stop button not a start button
+      currentButton.removeClass("start-timer-button").addClass("stop-timer-button");
+      $.ajax("/api/moment", {
+        type: "GET"
+      }).then(function(now) {
+        // set the startTime attribute of this button equal to the stringyfied moment.js object of the time when this button was click
+        currentButton.attr("startTime", JSON.stringify(now));
+      })
     } else {
-      $(this).html("Start")
-      $(this).removeClass("stop-timer-button").addClass("start-timer-button");
+      // change text in button to say "Stop"
+      currentButton.html("Start")
+      // indicate that this is now a start button not a stop button
+      currentButton.removeClass("stop-timer-button").addClass("start-timer-button");
+      $.ajax("/api/moment", {
+        type: "GET"
+      }).then(function(now) {
+        // set the stopTime attribute of this button equal to the stringyfied moment.js object of the time when this button was click
+        currentButton.attr("stopTime", JSON.stringify(now));
+        console.log(currentButton.html());
+        stopButtonJustClicked = currentButton;
+        console.log(stopButtonJustClicked);
+        $(".task-popup").css("display", "flex");
+      })
     }
+  })
+
+  $(".task-close").on("click", function (event) {
+    $(".task-popup").css("display", "none");
+    $("#tas-comments").val("");
+    $("#tas-reaction").val(""); // change this in the future as we won't input text for reaction
+  })
+
+  $(".submit-task-button").on("click", function (event) {
+    $(".task-popup").css("display", "none");
+    var newTask = {
+      startTime: stopButtonJustClicked.attr("startTime"),
+      stopTime: stopButtonJustClicked.attr("stopTime"),
+      comments: $("#tas-comments").val().trim(),
+      emoji: $("#tas-reaction").val().trim(),
+      SubgoalId: stopButtonJustClicked.attr("data-reference-subgoal-id")
+    }
+    $.ajax("/api/tasks", {
+      type: "POST",
+      data: newTask
+    }).then(
+      function() {
+        $("#tas-comments").val("");
+        $("#tas-reaction").val(""); // change this in the future
+      }
+    )
   })
 
   // $(".stop-timer-button").on("click", function (event) {
@@ -29,12 +79,12 @@ $(document).ready(function () {
   // on click listeners for controlling the display of the "add new subgoal" pop-up form
   $(".add-subgoal-button").on("click", function (event) {
     goalId = $(this).attr("data-reference-goal-id");
-    $(".popup").css("display", "flex");
+    $(".subgoal-popup").css("display", "flex");
     console.log(goalId);
   })
 
   $(".submit-subgoal-button").on("click", function (event) {
-    $(".popup").css("display", "none");
+    $(".subgoal-popup").css("display", "none");
     var newSubGoal = {
       name: $("#new-subgoa").val().trim(),
       GoalId: goalId
@@ -51,8 +101,8 @@ $(document).ready(function () {
     )
   })
 
-  $(".close").on("click", function (event) {
-    $(".popup").css("display", "none");
+  $(".subgoal-close").on("click", function (event) {
+    $(".subgoal-popup").css("display", "none");
     $("#new-subgoa").val("");
   })
 

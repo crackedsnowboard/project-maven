@@ -1,4 +1,5 @@
 var db = require("../../models");
+const moment = require("moment");
 
 module.exports = function(app) {
   // Find all Tasks and return them to the user with res.json
@@ -24,7 +25,9 @@ module.exports = function(app) {
   // otherwise, return the momenth.js object at the time that the request was made
   app.get("/api/moment", function(req, res) {
     if (req.timeString) {
-
+      res.json(moment(req.timeString));
+    } else {
+      res.json(moment());
     }
   })
 

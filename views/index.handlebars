@@ -18,14 +18,28 @@
 
 
 
-<div class="popup">
-  <div class="popup-content">
-    <button class="close">X</button>
+<div class="subgoal-popup">
+  <div class="subgoal-popup-content">
+    <button class="subgoal-close">X</button>
     <p class="subgoal-message">Enter the name of your subgoal below</p>
     <input type="text" id="new-subgoa">
     <button class="submit-subgoal-button">Add Subgoal</button>
   </div>
 </div>
+
+<div class="task-popup">
+  <div class="task-popup-content">
+    <button class="task-close">X</button>
+    <p class="task-message">How did it go? Write some comments below</p>
+    <input type="text" id="tas-comments">
+    <p class="task-message">Reaction</p>
+    {{!-- change this later to icons --}}
+    <input type="text" id="tas-reaction"> 
+    <button class="submit-task-button">Finish</button>
+  </div>
+</div>
+
+
 
 <h2>Add a user</h2>
 <form class="user-form">
