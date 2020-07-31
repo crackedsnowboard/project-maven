@@ -5,6 +5,23 @@ $(document).ready(function () {
 
   // ====================== Sam's Work Station =================// 
 
+  // on click listener for when a start timer button is clicked next to subgoal
+  $(".timer-button").on("click", function (event) {
+    if ($(this).hasClass("start-timer-button")) {
+      $(this).html("Stop")
+      $(this).removeClass("start-timer-button").addClass("stop-timer-button");
+    } else {
+      $(this).html("Start")
+      $(this).removeClass("stop-timer-button").addClass("start-timer-button");
+    }
+  })
+
+  // $(".stop-timer-button").on("click", function (event) {
+  //   console.log("made it");
+  //   $(this).html("Start")
+  //   $(this).removeClass("stop-timer-button").addClass("start-timer-button");
+  // })
+
   // on click listeners for controlling the display of the "add new subgoal" pop-up form
   $(".add-subgoal-button").on("click", function (event) {
     goalId = $(this).attr("data-reference-goal-id");
