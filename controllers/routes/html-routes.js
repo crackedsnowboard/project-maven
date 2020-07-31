@@ -6,6 +6,9 @@ var db = require("../../models");
 // Dependencies
 var path = require("path");
 
+// Global Vars
+var id;
+
 // Routes
 // =============================================================
 
@@ -35,28 +38,28 @@ module.exports = function (app) {
 
   // Second webpage - will we have a second index2.handlebars page?
   // second route loads /second.html or 
-  app.get("/second", function (req, res) {
-   
+  app.get("/second/:id", function (req, res) {
+    id = req.params.id;
+   console.log(id);
   db.Goals.findAll({
     // raw: true,
-    where: {
-      id: 1
-    }
+    where: { id: req.params.id }
   }).then(function (data) {
     // console.log(data);
     GoalsData = {
       Goals: data,
     }
-    findAllSubG(GoalsData, res)
+    findAllSubG(GoalsData, id, res)
   });
 });
     // res.sendFile(path.join(__dirname, "../../second.html"));
-    function findAllSubG (GoalsData, res) {
+    function findAllSubG (GoalsData, id,  res) {
+      console.log("findAllSubG's called");
     db.Subgoals.findAll({
       // raw: true,
 
       where: {
-        GoalId: 1,
+        GoalId: id,
       },
       include: [
         // {

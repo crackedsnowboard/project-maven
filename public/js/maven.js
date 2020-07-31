@@ -4,6 +4,7 @@ $(document).ready(function () {
   var goalId;
   var taskId;
   var editId;
+  var subgId;
 
   // ====================== Sam's Work Station =================// 
 
@@ -42,11 +43,14 @@ $(document).ready(function () {
   // buttons on goal cards for getting to second page
   // html-routes 
   $(".goal-card-button").on("click", function (event) {
-    $.ajax("/second", {
+    var id = $(this).attr("id");
+    console.log("gc clicked; id = " + id)
+
+    $.ajax("/second/" + id, {
       type: "GET"
     }).then(function (res) {
       console.log("on second page");
-      location.assign("/second");
+      location.assign("/second/" + id);
     })
   })
 
@@ -223,7 +227,7 @@ $(document).ready(function () {
     );
   });
 
-// Delete Comment Function 
+  // Delete Comment Function 
   $('.delete-comment').on('click', (event) => {
     console.log('delete was clicked!');
     taskId = event.target.id;
@@ -231,7 +235,7 @@ $(document).ready(function () {
     $.ajax("/api/tasks/" + taskId, {
       type: "DELETE"
     }).then(
-      function() {
+      function () {
         console.log("deleted comment with id", taskId);
         location.reload();
       }
@@ -245,21 +249,20 @@ $(document).ready(function () {
     console.log(subgId);
     $.ajax("api/subgoals/" + subgId, {
       type: "DELETE"
-    }).then( () => {
+    }).then(() => {
       console.log("delete subg with id = ", subgId);
       location.reload();
     })
   });
 
+  // ===== Edit Comment Section ==== // 
   $('.edit-comment').on('click', (event) => {
     console.log('edit comment was clicked!');
     editId = event.target.id;
     console.log(editId);
-    // WHY ISN'T THIS WORKING!!! 
-    // dataAttr = $(this).attr("data-subgoal-id");
-    // console.log(dataAttr);
 
-    $(".popup-edit-comments").css("display", "flex");  
+    // Pop up to edit comments
+    $(".popup-edit-comments").css("display", "flex");
   })
 
   // collects info from comment pop up and sends ajax call 
@@ -269,18 +272,62 @@ $(document).ready(function () {
     var editedComment = {
       comments: $("#edit-comment").val().trim(),
     }
-    console.log(editedComment.comments);
+
     $.ajax("/api/tasks/" + editId, {
       type: "PUT",
       data: editedComment
     }).then(
       function () {
-        console.log("created a new comment with the comment popup form" + editId);
+        console.log("edited an existing comment with id: " + editId);
         $("#new-comment").val("");
         location.reload();
-      }
-    )
+      })
   })
-  // ======================  =================// 
+  // ==== Edit Comment Section ===// 
 
+
+  // ==== Edit Subgoal Section ===// 
+  $(".edit-subgoal").on("click", (event) => {
+    console.log('edit Subg was clicked!');
+    subgId = event.target.id;
+    console.log(subgId);
+
+    // Pop up to edit subgoal
+    $(".popup-edit-subgoals").css("display", "flex");
+  })
+
+  // collects info to update Subgoal
+  $(".edit-subgoal-button").on('click', (event) => {
+    console.log('edit subgoal with id = ' + subgId);
+    $('.popup').css("display", "none");
+    var editedSubgoal = {
+      name: $("#edit-subgoal").val().trim(),
+    }
+    console.log(editedSubgoal);
+
+    $.ajax("/api/subgoals/" + subgId, {
+      type: "PUT",
+      data: editedSubgoal
+    }).then(
+      function () {
+        console.log("edited an existing Subgoal with id: " + subgId);
+        $("#edit-subgoal").val("");
+        location.reload();
+
+      })
+  })
+
+  $('.home-btn').on('click', (event) => {
+    console.log('home btn clicked!');
+
+    $.ajax("/", {
+      type: "GET"
+  }).then(function (res) {
+    console.log("on home page");
+    location.assign("/");
+  })
+
+
+  })
 });
+
