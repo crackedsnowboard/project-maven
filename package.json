@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/crackedsnowboard/project-maven#readme",
   "dependencies": {
+    "chartist": "^0.11.4",
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
     "moment": "^2.27.0",

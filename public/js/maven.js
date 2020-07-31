@@ -10,6 +10,15 @@ $(document).ready(function () {
 
   // ====================== Sam's Work Station =================// 
 
+  new Chartist.Line("#time-each-day", {
+    labels: getChartistLabels(),
+    series: getChartistSeries()
+  }, {
+    fullWidth: true,
+    chartPadding: {
+      right: 40
+    }
+  });
 
   // on click listener for when a start timer button is clicked next to subgoal
   $(".timer-button").on("click", function (event) {
@@ -111,6 +120,7 @@ $(document).ready(function () {
   // buttons on goal cards for getting to second page
   // html-routes 
   $(".goal-card-button").on("click", function (event) {
+    var goalCardButtonId = $(this).attr()
     $.ajax("/second", {
       type: "GET"
     }).then(function (res) {
