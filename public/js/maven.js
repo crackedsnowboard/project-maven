@@ -222,9 +222,8 @@ $(document).ready(function () {
     );
   });
 
-
+// Delete Comment Function 
   $('.delete-comment').on('click', (event) => {
-
     console.log('delete was clicked!');
     taskId = event.target.id;
     console.log(taskId);
@@ -237,6 +236,13 @@ $(document).ready(function () {
       }
     )
   })
+
+
+  $('.delete-subgoal').on('click', (event) => {
+    console.log('delete subg was clicked!');
+    subgId = event.target.id;
+    console.log(subgId);
+  });
   // ======================  =================// 
 
 });
