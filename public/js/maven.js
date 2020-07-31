@@ -4,6 +4,7 @@ $(document).ready(function () {
   var goalId;
   var taskId;
   var editId;
+  var editSubg;
 
   // ====================== Sam's Work Station =================// 
 
@@ -280,5 +281,12 @@ $(document).ready(function () {
     )
   })
   // ==== Edit Comment Section ===// 
+
+  // ==== Edit Subgoal Section ===// 
+  $(".subgoal-edit-card-button").on("click", function (event) {
+    console.log('edit Subg was clicked!');
+    editSubg = event.target.id;
+    console.log(editSubg);
+  })
 
 });
