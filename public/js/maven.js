@@ -316,4 +316,18 @@ $(document).ready(function () {
 
       })
   })
+
+  $('.home-btn').on('click', (event) => {
+    console.log('home btn clicked!');
+
+    $.ajax("/", {
+      type: "GET"
+  }).then(function (res) {
+    console.log("on home page");
+    location.assign("/");
+  })
+
+
+  })
 });
+
