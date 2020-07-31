@@ -12,58 +12,25 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	{{!-- <script src="https://code.jquery.com/jquery.js"></script> --}}
 	<script src="/js/maven.js"></script>
-	{{!-- Firebase UI --}}
-	<script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-	<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
-	<script type="text/javascript">
-		// FirebaseUI config.
-		var uiConfig = {
-			signInSuccessUrl: 'https://fast-cove-37541.herokuapp.com/',
-			signInOptions: [
-				// Leave the lines as is for the providers you want to offer your users.
-				firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-				firebase.auth.EmailAuthProvider.PROVIDER_ID
-			]
-			// tosUrl and privacyPolicyUrl accept either url string or a callback
-			// function.
-			// Terms of service url/callback.
-		};
-
-		// Initialize the FirebaseUI Widget using Firebase.
-		var ui = new firebaseui.auth.AuthUI(firebase.auth());
-		// The start method will wait until the DOM is loaded.
-		ui.start('#firebaseui-auth-container', uiConfig);
-	</script>
+	<script srv="/js/home.js"></script>
+	<script srv="/js/signup.js"></script>
+	<script srv="/js/profile.js"></script>
 </head>
 
 <body>
 	{{{ body }}}
 
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+	<!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+	<script src="assets/js/authenticatate.js"></script>
+	<script src="assets/js/auth-signup.js"></script>
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyCg3wQo8J8Ecm9NU1ys1mawP7LRnQ04FiU",
-    authDomain: "maven-61156.firebaseapp.com",
-    databaseURL: "https://maven-61156.firebaseio.com",
-    projectId: "maven-61156",
-    storageBucket: "maven-61156.appspot.com",
-    messagingSenderId: "521757513471",
-    appId: "1:521757513471:web:d8affcc6917e61ee275eca",
-    measurementId: "G-PZBT37J4TM"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
 </body>
 
 </html>
