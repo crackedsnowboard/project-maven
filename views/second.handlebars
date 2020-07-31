@@ -3,7 +3,7 @@
   <div class="nav-wrapper">
     <a href="#" class="brand-logo left">Logo</a>
     <ul id="nav-mobile" class="right">
-      <li><a href="sass.html">Home</a></li>
+      <li><a class="home-btn">Home</a></li>
       {{!-- <li><a href="badges.html">Components</a></li>
         <li><a href="collapsible.html">JavaScript</a></li> --}}
 
@@ -32,6 +32,16 @@
       <p class="task-message">Edit Comment:</p>
       <input type="text" id="edit-comment">
       <button class="edit-comment-button">Submit</button>
+    </div>
+  </div>
+
+  {{!-- Popup window when 'Subgoal' is clicked [edit] --}}
+  <div class="popup-edit-subgoals">
+    <div class="popup-content">
+      <button class="close">X</button>
+      <p class="task-message">Edit Subgoal:</p>
+      <input type="text" id="edit-subgoal">
+      <button class="edit-subgoal-button">Submit</button>
     </div>
   </div>
 
