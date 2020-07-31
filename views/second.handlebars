@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  {{!-- Attempt to READ Main goal name --}}
+  {{!-- This works!!! --}}
     <ul>
       {{#each Goals}}
       <li>
@@ -39,12 +39,12 @@
 
   {{!-- ----------------------------------------------- --}}
   {{!-- Attempt to do Subgoals.Goals.dataValues.name --}}
-  <ul>
+  {{!-- <ul>
     {{#each Subgoals}}
     {{> subGoals/subGoal-second-block}}
     {{/each}}
   </ul>
-  {{!--  --}}
+   --}}
 
   {{!-- ----------------------------------------------- --}}
 
@@ -52,7 +52,7 @@
   <div class="row">
     <ul>
       {{#each Subgoals}}
-      {{> goals/second-goal-block}}
+      {{> goals/second-goal-block}} 
       {{/each}}
     </ul>
   </div>
