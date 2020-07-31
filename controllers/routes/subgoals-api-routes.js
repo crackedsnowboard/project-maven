@@ -19,6 +19,7 @@ module.exports = function(app) {
     });
   });
 
+
   app.post("/api/subgoals", function(req, res) {
     // Create an Subgoal with the data available to us in req.body
     console.log(req.body);
@@ -27,17 +28,23 @@ module.exports = function(app) {
     });
   });
 
-  app.put("/api/subgoals", function(req, res) {
-    db.Subgoals.update(req.body,
-      {
-          where: {
-              id: req.body.id
-          }
-      }).then(function(dbSubgoals) {
+ // ====== Update Subgoal
+  app.put("/api/subgoals/:id", function(req, res) {
+    console.log('post was hit');
+    console.log(req.body.name);
+    console.log("req id = " + req.params.id);
+    //Edit a Subgoal with the data in req.body
+    db.Subgoals.update(
+      { "name": req.body.name},
+      { where: { id: req.params.id} }
+
+    ).then(function(dbSubgoals) {
           res.json(dbSubgoals);
       });
 });
 
+
+// ======= Delete Card / Subgoal
   app.delete("/api/subgoals/:id", function(req, res) {
     // Delete the Subgoal with the id available to us in req.params.id
     db.Subgoals.destroy({

@@ -224,7 +224,7 @@ $(document).ready(function () {
     );
   });
 
-// Delete Comment Function 
+  // Delete Comment Function 
   $('.delete-comment').on('click', (event) => {
     console.log('delete was clicked!');
     taskId = event.target.id;
@@ -232,7 +232,7 @@ $(document).ready(function () {
     $.ajax("/api/tasks/" + taskId, {
       type: "DELETE"
     }).then(
-      function() {
+      function () {
         console.log("deleted comment with id", taskId);
         location.reload();
       }
@@ -246,7 +246,7 @@ $(document).ready(function () {
     console.log(subgId);
     $.ajax("api/subgoals/" + subgId, {
       type: "DELETE"
-    }).then( () => {
+    }).then(() => {
       console.log("delete subg with id = ", subgId);
       location.reload();
     })
@@ -258,7 +258,8 @@ $(document).ready(function () {
     editId = event.target.id;
     console.log(editId);
 
-    $(".popup-edit-comments").css("display", "flex");  
+    // Pop up to edit comments
+    $(".popup-edit-comments").css("display", "flex");
   })
 
   // collects info from comment pop up and sends ajax call 
@@ -277,37 +278,40 @@ $(document).ready(function () {
         console.log("edited an existing comment with id: " + editId);
         $("#new-comment").val("");
         location.reload();
-      }
-    )
+      })
   })
   // ==== Edit Comment Section ===// 
 
 
-
   // ==== Edit Subgoal Section ===// 
-  $(".subgoal-edit-card-button").on("click", (event) => {
+  $(".edit-subgoal").on("click", (event) => {
     console.log('edit Subg was clicked!');
-       $(".popup-edit-subgoals").css("display", "none");
     subgId = event.target.id;
     console.log(subgId);
 
     // Pop up to edit subgoal
-    $("edit-subgoal-button").css("display", "flex");
+    $(".popup-edit-subgoals").css("display", "flex");
+  })
+
+  // collects info to update Subgoal
+  $(".edit-subgoal-button").on('click', (event) => {
+    console.log('edit subgoal with id = ' + subgId);
+    $('.popup').css("display", "none");
     var editedSubgoal = {
       name: $("#edit-subgoal").val().trim(),
     }
-    
-    // $.ajax("/api/subgoals/" + subgId, {
-    //   type: "PUT",
-    //   data: editedSubgoal
-    // }).then (
-    //   function () {
-    //     console.log("edited an existing Subgoal with id: " + subgId);
-    //     $("#edit-subgoal").val("");
-        // location.reload();
-      
-      })
+    console.log(editedSubgoal);
 
-  // })
+    $.ajax("/api/subgoals/" + subgId, {
+      type: "PUT",
+      data: editedSubgoal
+    }).then(
+      function () {
+        console.log("edited an existing Subgoal with id: " + subgId);
+        $("#edit-subgoal").val("");
+        location.reload();
+
+      })
+  })
 
 });
