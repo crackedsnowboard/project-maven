@@ -2,6 +2,7 @@
 $(document).ready(function () {
 
   var goalId;
+  var taskId;
 
   // ====================== Sam's Work Station =================// 
 
@@ -221,6 +222,21 @@ $(document).ready(function () {
     );
   });
 
+
+  $('.delete-comment').on('click', (event) => {
+
+    console.log('delete was clicked!');
+    taskId = event.target.id;
+    console.log(taskId);
+    $.ajax("/api/tasks/" + taskId, {
+      type: "DELETE"
+    }).then(
+      function() {
+        console.log("deleted comment with id", taskId);
+        location.reload();
+      }
+    )
+  })
   // ======================  =================// 
 
 });
