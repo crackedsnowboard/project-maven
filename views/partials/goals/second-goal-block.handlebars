@@ -13,17 +13,19 @@
       <div class="container">
         <h5>Comments:</h5>
         <ul>
+        
           {{#each Tasks}}
-          {{> tasks/task-block}}
+          <h6>{{> tasks/task-block}}</h6>
+           <button class="edit-comment" data-reference-goal-id="{{{dataValues.id}}}">Edit</button>
+           <button class="delete-comment" data-reference-goal-id="{{{dataValues.id}}}">Delete</button>
           {{/each}}
+
         </ul>
-
-        <br><br>
-
+        <br>
         {{!-- Add Comment Btn --}}
         <button class="add-comment-button" data-reference-goal-id="{{{dataValues.id}}}">Add A New Comment</button>
       </div>
-
+        <br>      
       {{!-- Links if we want them later --}}
       {{!-- <div class="card-action">
         <a href="#">This is a link</a>

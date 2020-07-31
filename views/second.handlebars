@@ -15,29 +15,38 @@
 
 <div class="container">
 
-{{!-- Popup window when 'add a new comment' is clicked --}}
-<div class="popup">
-  <div class="popup-content">
-    <button class="close">X</button>
-    <p class="task-message">Create a New Comment:</p>
-    <input type="text" id="new-comment">
-    <button class="submit-comment-button">Add Comment</button>
+  {{!-- Popup window when 'add a new comment' is clicked --}}
+  <div class="popup">
+    <div class="popup-content">
+      <button class="close">X</button>
+      <p class="task-message">Create a New Comment:</p>
+      <input type="text" id="new-comment">
+      <button class="submit-comment-button">Add Comment</button>
+    </div>
   </div>
-</div>
 
-{{!-- Attempt to READ Main goal name --}}
-  <h1>Goal Name Goes Here ________ {{Goal.dataValues.name}}</h1>
+  {{!-- Attempt to READ Main goal name --}}
+    <ul>
+      {{#each Goals}}
+      <li>
+        <h1>{{dataValues.name}}</h1>
+      </li>
+      {{/each}}
+    </ul>
 
-{{!-- ----------------------------------------------- --}}
-{{!-- Attempt to do Subgoals.Goals.dataValues.name --}}
+
+
+
+  {{!-- ----------------------------------------------- --}}
+  {{!-- Attempt to do Subgoals.Goals.dataValues.name --}}
   <ul>
     {{#each Subgoals}}
     {{> subGoals/subGoal-second-block}}
     {{/each}}
   </ul>
-{{!--  --}}
+  {{!--  --}}
 
-{{!-- ----------------------------------------------- --}}
+  {{!-- ----------------------------------------------- --}}
 
   {{!-- <h2>list of all goals (for testing purposes)</h2> --}}
   <div class="row">
@@ -48,7 +57,7 @@
     </ul>
   </div>
 
-{{!-- Create a New Sub Goal Option --}}
+  {{!-- Create a New Sub Goal Option --}}
   <h4>New Sub Goal</h4>
   <form class="subgoal-form">
     <div class="form-group">
@@ -57,7 +66,7 @@
       {{!-- <label for="subgoa">New Sub Goal GoalID:</label>
             <input type="text" id="subgoa-id" name="id"> --}}
     </div>
-      <button type="submit" class="subclass-btn">Add Sub Goal</button>
+    <button type="submit" class="subclass-btn">Add Sub Goal</button>
   </form>
 
 
@@ -73,7 +82,7 @@
 
   </div>
 
- 
+
 
   {{!-- This functionality works! However, when I change the button to the materialze btn, function gets weird (loses name) --}}
   {{!-- <h5>Add a goal</h5>
