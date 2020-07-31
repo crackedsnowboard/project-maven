@@ -5,9 +5,8 @@
       {{!-- Card Name --}}
       <div class="card-content white-text">
         
-        <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons delete-subgoal" id="{{{dataValues.id}}}">X</i></a>
         <span class="card-title" id='{{{id}}}' data-id="{{{id}}}" data-parent="{{{dataValues.name}}}">
-          <button class="subgoal-card-button">{{{dataValues.name}}}</button>  
+          <button class="subgoal-card-button" style="display: inline-block">{{{dataValues.name}}}</button>  <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons delete-subgoal" id="{{{dataValues.id}}}" style="display: inline-block">X</i></a>
           <h5>&#38 Comments:</h5> 
         </span>
       </div>
