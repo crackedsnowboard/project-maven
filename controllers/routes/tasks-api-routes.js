@@ -45,6 +45,21 @@ module.exports = function(app) {
     });
   });
 
+  app.put("/api/tasks/:id", function(req, res) {
+    console.log("post was hit");
+    console.log(req.body);
+    console.log("req id = " + req.params.id);
+    // Edit a Task with the data available to us in req.body
+    console.log(req.body);
+    db.Tasks.update(
+      {   "comments": req.body.comments },
+      {  where: { id: req.params.id} }
+
+        ).then(function(dbTasks) {
+      res.json(dbTasks);
+    });
+  });
+
   app.delete("/api/tasks/:id", function(req, res) {
     // Delete the Tasks with the id available to us in req.params.id
     db.Tasks.destroy({
