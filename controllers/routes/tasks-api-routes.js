@@ -1,4 +1,5 @@
 var db = require("../../models");
+const moment = require("moment");
 
 module.exports = function(app) {
   // Find all Tasks and return them to the user with res.json
@@ -18,6 +19,17 @@ module.exports = function(app) {
       res.json(dbTasks);
     });
   });
+
+  // returns a moment.js object
+  // if a time is passed in via req.timeString, return the moment.js object at that time
+  // otherwise, return the momenth.js object at the time that the request was made
+  app.get("/api/moment", function(req, res) {
+    if (req.timeString) {
+      res.json(moment(req.timeString));
+    } else {
+      res.json(moment());
+    }
+  })
 
   app.post("/api/tasks", function(req, res) {
     console.log("post was hit");
