@@ -283,10 +283,12 @@ $(document).ready(function () {
   // ==== Edit Comment Section ===// 
 
   // ==== Edit Subgoal Section ===// 
-  $(".subgoal-edit-card-button").on("click", function (event) {
+  $(".subgoal-edit-card-button").on("click", (event) => {
     console.log('edit Subg was clicked!');
     editSubg = event.target.id;
     console.log(editSubg);
+
+    $(".popup-edit-subgoals").css("display", "flex");
   })
 
 });

@@ -35,6 +35,16 @@
     </div>
   </div>
 
+  {{!-- Popup window when 'Subgoal' is clicked [edit] --}}
+  <div class="popup-edit-subgoals">
+    <div class="popup-content">
+      <button class="close">X</button>
+      <p class="task-message">Edit Subgoal:</p>
+      <input type="text" id="edit-comment">
+      <button class="edit-subgoal-button">Submit</button>
+    </div>
+  </div>
+
   {{!-- This works!!! --}}
     <ul>
       {{#each Goals}}
