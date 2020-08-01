@@ -14,17 +14,17 @@ module.exports = function(app) {
     // IF NOT A USER 
     // Send to login page
     // res.sendFile(path.join(__dirname, "../public/signup.html"));
-    res.render("signup");
+    res.render("login");
   });
 
-  app.get("/login", function(req, res) {
+  app.get("/signup", function(req, res) {
     // If the user logged in send them to the members page
     if (req.user) {
       res.redirect("/home");
     }
     // IF USER FAILED TO LOG IN
     // res.sendFile(path.join(__dirname, "../public/login.html"));
-    res.render("login");
+    res.render("signup");
   });
 
   // Here we've add our isAuthenticated middleware to this route.
