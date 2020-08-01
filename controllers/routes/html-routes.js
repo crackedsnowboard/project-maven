@@ -17,7 +17,7 @@ module.exports = function (app) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // index route loads the main page in index.handlebars
-  app.get("/", function (req, res) {
+  app.get("/home", function (req, res) {
 
     db.Goals.findAll({
       include: "Subgoals",
