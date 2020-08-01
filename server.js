@@ -43,17 +43,17 @@ app.set("view engine", "handlebars");
 // ======================== Joel's work area =========================
 
 // middleware for logging api methods on routes. For testing purposes can delete before final deployment through line 37.
-// app.use((req, res, next) => {
-//   var now = new Date().toString();
-//   var log = `${now}: ${req.method} ${req.url}`;
-//   console.log(log);
-//   fs.appendFile('server.log', log + '\n', (err) => {
-//     if(err) {
-//       console.log('unable to append to server.log');
-//     }
-//   });
-//   next();
-// });
+app.use((req, res, next) => {
+  var now = new Date().toString();
+  var log = `${now}: ${req.method} ${req.url}`;
+  console.log(log);
+  fs.appendFile('server.log', log + '\n', (err) => {
+    if(err) {
+      console.log('unable to append to server.log');
+    }
+  });
+  next();
+});
 
 // Import routes and give the server access to them.
 // var routes = require("./controllers/mavenController.js");
