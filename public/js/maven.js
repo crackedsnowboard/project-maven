@@ -11,15 +11,15 @@ $(document).ready(function () {
 
   // ====================== Sam's Work Station =================// 
 
-  new Chartist.Line("#time-each-day", {
-    labels: getChartistLabels(),
-    series: getChartistSeries()
-  }, {
-    fullWidth: true,
-    chartPadding: {
-      right: 40
-    }
-  });
+  // new Chartist.Line("#time-each-day", {
+  //   labels: getChartistLabels(),
+  //   series: getChartistSeries()
+  // }, {
+  //   fullWidth: true,
+  //   chartPadding: {
+  //     right: 40
+  //   }
+  // });
 
   // on click listener for when a start timer button is clicked next to subgoal
   $(".timer-button").on("click", function (event) {
