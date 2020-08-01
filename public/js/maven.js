@@ -32,7 +32,7 @@ $(document).ready(function () {
       currentButton.removeClass("start-timer-button").addClass("stop-timer-button");
       $.ajax("/api/moment", {
         type: "GET"
-      }).then(function(now) {
+      }).then(function (now) {
         // set the startTime attribute of this button equal to the stringyfied moment.js object of the time when this button was click
         currentButton.attr("startTime", JSON.stringify(now));
       })
@@ -43,7 +43,7 @@ $(document).ready(function () {
       currentButton.removeClass("stop-timer-button").addClass("start-timer-button");
       $.ajax("/api/moment", {
         type: "GET"
-      }).then(function(now) {
+      }).then(function (now) {
         // set the stopTime attribute of this button equal to the stringyfied moment.js object of the time when this button was click
         currentButton.attr("stopTime", JSON.stringify(now));
         console.log(currentButton.html());
@@ -73,7 +73,7 @@ $(document).ready(function () {
       type: "POST",
       data: newTask
     }).then(
-      function() {
+      function () {
         $("#tas-comments").val("");
         $("#tas-reaction").val(""); // change this in the future
       }
@@ -400,12 +400,31 @@ $(document).ready(function () {
 
     $.ajax("/", {
       type: "GET"
-  }).then(function (res) {
-    console.log("on home page");
-    location.assign("/");
+    }).then(function (res) {
+      console.log("on home page");
+      location.assign("/");
+    })
+  })
+
+  // ====================== Joel's Work Station =================// 
+
+  $('.login-button').on('click', (event) => {
+    console.log('login btn clicked!');
+
+    $.ajax("/", {
+      type: "GET"
+    }).then(function (res) {
+      console.log("on home page");
+      window.location.assign('/login.html');
+    })
+
   })
 
 
-  })
+
+
+
+
+  // ====================== End Joel's Work Station =================// 
 });
 
