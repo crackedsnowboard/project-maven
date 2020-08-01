@@ -395,6 +395,7 @@ $(document).ready(function () {
       })
   })
 
+  // Second Page - Click on Home Btn
   $('.home-btn').on('click', (event) => {
     console.log('home btn clicked!');
 
@@ -408,17 +409,17 @@ $(document).ready(function () {
 
   // ====================== Joel's Work Station =================// 
 
-  $('.login-button').on('click', (event) => {
-    console.log('login btn clicked!');
+  // $('.login-button').on('click', (event) => {
+  //   console.log('login btn clicked!');
 
-    $.ajax("/", {
-      type: "GET"
-    }).then(function (res) {
-      console.log("on home page");
-      window.location.assign('/login.html');
-    })
+  //   $.ajax("/", {
+  //     type: "GET"
+  //   }).then(function (res) {
+  //     console.log("on home page");
+  //     window.location.assign('/login.html');
+  //   })
 
-  })
+  // })
 
 
 
