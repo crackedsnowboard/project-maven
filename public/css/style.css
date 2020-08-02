@@ -92,6 +92,27 @@
     text-align: center;
     z-index: 1;
 }
+.popup-add-new-comment {
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+}
+
+.popup-content {
+    height: 200px;
+    width: 500px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
 
 input {
     margin: 20px auto;
@@ -102,7 +123,8 @@ input {
 }
 
 .subgoal-close,
-.task-close {
+.task-close,
+.close {
     position: absolute;
     top: 0px;
     right: 0px;

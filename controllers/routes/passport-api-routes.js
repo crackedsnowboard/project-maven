@@ -15,11 +15,12 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
     db.User.create({
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
       .then(function() {
-        res.redirect(307, "/api/login");
+        res.render("login");
       })
       // By default, if authentication fails, Passport will respond with a 401 Unauthorized status, 
       .catch(function(err) {

@@ -8,6 +8,7 @@ $(document).ready(function () {
   var stopButtonJustClicked;
   var currentButton;
   var subgId;
+  var mainGoalId;
   var timeEachDaySeries;
   var timeOverTimeSeries;
   var chartistSeries;
@@ -289,13 +290,14 @@ $(document).ready(function () {
   $(".add-comment-button").on("click", function (event) {
     SubgoalId = $(this).attr("data-reference-goal-id");
     console.log(SubgoalId);
-    $(".popup").css("display", "flex");
+    $(".popup-add-new-comment").css("display", "flex");
 
   })
 
   // collects info from comment pop up and sends ajax call 
   $(".submit-comment-button").on("click", function (event) {
-    $(".popup").css("display", "none");
+    $(".popup-add-new-comment").css("display", "flex");
+    console.log("pop called");
     var newComment = {
       startTime: 0,
       stopTime: 0,
@@ -322,6 +324,9 @@ $(document).ready(function () {
 
   // NEW SUB GOAL BTN
   $(".subclass-btn").on("click", function (event) {
+    // mainGoalId = $(this).attr("data-id");
+    mainGoalId = event.target.id;
+    console.log(mainGoalId);
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
     // function createSubGoal () {
@@ -331,14 +336,13 @@ $(document).ready(function () {
 
       // IMPORTANT !!!!!! 
       //this needs to be edited to grab parent(goal) ID
-      GoalId: 1,
+      GoalId: mainGoalId,
       // IMPORTANT !!!!!!   
 
     };
     console.log(newSubGoal.name);
     console.log(newSubGoal.GoalId);
 
-    // Send the POST request.
     $.ajax("/api/subgoals", {
       type: "POST",
       data: newSubGoal
@@ -353,6 +357,19 @@ $(document).ready(function () {
       }
     );
   });
+
+  // Close Comment Popup
+  $(".close").on("click", function (event) {
+    $(".popup-add-new-comment").css("display", "none");
+    $("#new-comment").val("");
+  })
+
+  // Close Edit Subg Popup
+  $(".close").on("click", function (event) {
+    $(".popup-edit-subgoals").css("display", "none");
+    $("#edit-subgoal").val("");
+  })
+
 
   // Task Create function - Currently commented out on second.hbr
   $('.task-submit').on('click', (event) => {
@@ -394,12 +411,12 @@ $(document).ready(function () {
     )
   })
 
-
+  // Delete Subgoal Card
   $('.delete-subgoal').on('click', (event) => {
     console.log('delete subg was clicked!');
     subgId = event.target.id;
     console.log(subgId);
-    $.ajax("api/subgoals/" + subgId, {
+    $.ajax("/api/subgoals/" + subgId, {
       type: "DELETE"
     }).then(() => {
       console.log("delete subg with id = ", subgId);
@@ -502,4 +519,3 @@ $(document).ready(function () {
 
   // ====================== End Joel's Work Station =================// 
 });
-

@@ -46,8 +46,8 @@ module.exports = function (app) {
     // Create an User with the data available to us in req.body
     // console.log(req.body);
     db.Users.create({
-      "name": req.body.name,
-      "username": req.body.username
+      "email": req.body.email,
+      "password": req.body.password
     }).then(function (dbUsers) {
       res.json(dbUsers);
     });
