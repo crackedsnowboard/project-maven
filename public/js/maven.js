@@ -91,7 +91,7 @@ $(document).ready(function () {
     unsortedKeysArray = Object.keys(dates.responseJSON);
     sortedKeysArray = unsortedKeysArray.sort(function(a, b){return a-b});
     console.log(sortedKeysArray)
-    return [sortedKeysArray];
+    return sortedKeysArray;
   }
 
   // on click listener for when a start timer button is clicked next to subgoal
