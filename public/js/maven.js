@@ -90,6 +90,7 @@ $(document).ready(function () {
     chartistData = [];
     unsortedKeysArray = Object.keys(dates.responseJSON);
     sortedKeysArray = unsortedKeysArray.sort(function(a, b){return a-b});
+    console.log(sortedKeysArray)
     return [sortedKeysArray];
   }
 

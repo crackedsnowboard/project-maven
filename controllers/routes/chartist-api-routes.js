@@ -42,7 +42,7 @@ module.exports = function (app) {
                     startTime = moment(combinedData.Subgoals[i].dataValues.Tasks[j].dataValues.startTime, "YYYY-MM-DDTHH:mm:ssZ");
                     stopTime = moment(combinedData.Subgoals[i].dataValues.Tasks[j].dataValues.stopTime, "YYYY-MM-DDTHH:mm:ssZ");
                     timeSpent = stopTime.diff(startTime, "seconds");
-                    today = startTime.year().toString() + startTime.month().toString() + startTime.date().toString();
+                    today = startTime.year().toString() + (startTime.month() + 1).toString() + startTime.date().toString();
                     if (today.length === 6) {
                         today = today.concat("0");
                     }
