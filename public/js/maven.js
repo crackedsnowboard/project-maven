@@ -215,13 +215,14 @@ $(document).ready(function () {
   $(".add-comment-button").on("click", function (event) {
     SubgoalId = $(this).attr("data-reference-goal-id");
     console.log(SubgoalId);
-    $(".popup").css("display", "flex");
+    $(".popup-add-new-comment").css("display", "flex");
 
   })
 
   // collects info from comment pop up and sends ajax call 
   $(".submit-comment-button").on("click", function (event) {
-    $(".popup").css("display", "none");
+    $(".popup-add-new-comment").css("display", "flex");
+    console.log("pop called");
     var newComment = {
       startTime: 0,
       stopTime: 0,
