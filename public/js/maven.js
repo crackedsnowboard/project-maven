@@ -365,6 +365,33 @@ $(document).ready(function () {
     );
   });
 
+  // New GOAL BTN
+  $(".add-goal-btn").on('click', (event) => {
+    userId = event.target.id;
+    console.log("userid = " + userId);
+    event.preventDefault();
+    console.log('add goal called');
+
+    var newGoal = {    
+    name: $("#goa").val().trim(),
+    UserId: userId
+  };
+console.log(newGoal);
+
+$.ajax("/api/goals", {
+  type: "POST",
+  data: newGoal
+}).then(
+  function () {
+    console.log("created a new goal");
+    $("#goa").val('');
+    location.reload();
+    
+    });
+  });
+
+
+
   // Close Comment Popup
   $(".close").on("click", function (event) {
     $(".popup-add-new-comment").css("display", "none");
