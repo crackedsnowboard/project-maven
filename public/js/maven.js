@@ -281,6 +281,13 @@ $(document).ready(function () {
     );
   });
 
+  // Close Comment Popup
+  $(".close").on("click", function (event) {
+    $(".popup-add-new-comment").css("display", "none");
+    $("#new-comment").val("");
+  })
+
+
   // Task Create function - Currently commented out on second.hbr
   $('.task-submit').on('click', (event) => {
     console.log("submit was clicked");
