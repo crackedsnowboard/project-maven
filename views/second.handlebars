@@ -77,17 +77,29 @@
     </ul>
   </div>
 
+{{!-- Colin Work Station --}}
   {{!-- Create a New Sub Goal Option --}}
+
+     <ul>
+      {{#each Goals}}
+      {{> subGoals/subGoal-third}} 
+      {{/each}}
+    </ul>
+{{!--     
   <h4>New Sub Goal</h4>
   <form class="subgoal-form">
     <div class="form-group">
       <label for="subgoa">Name:</label>
-      <input type="text" class="subgoa-name" name="name" data-id="{{{id}}}">
+      <input type="text" class="subgoa-name" name="name" data-id="{{{dataValues.id}}}"> --}}
       {{!-- <label for="subgoa">New Sub Goal GoalID:</label>
             <input type="text" id="subgoa-id" name="id"> --}}
-    </div>
+    {{!-- </div>
     <button type="submit" class="subclass-btn">Add Sub Goal</button>
-  </form>
+  </form> --}}
+
+{{!-- END Colin Work Station --}}
+
+
 
   <div class="ct-chart ct-perfect-fourth" id="time-each-day"></div>
   <div class="ct-chart ct-perfect-fourth" id="time-over-time"></div>

@@ -8,6 +8,7 @@ $(document).ready(function () {
   var stopButtonJustClicked;
   var currentButton;
   var subgId;
+  var mainGoalId;
 
   // ====================== Sam's Work Station =================// 
 
@@ -249,6 +250,9 @@ $(document).ready(function () {
 
   // NEW SUB GOAL BTN
   $(".subclass-btn").on("click", function (event) {
+    // mainGoalId = $(this).attr("data-id");
+    mainGoalId = event.target.id;
+    console.log(mainGoalId);
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
     // function createSubGoal () {
@@ -258,14 +262,13 @@ $(document).ready(function () {
 
       // IMPORTANT !!!!!! 
       //this needs to be edited to grab parent(goal) ID
-      GoalId: 1,
+      GoalId: mainGoalId,
       // IMPORTANT !!!!!!   
 
     };
     console.log(newSubGoal.name);
     console.log(newSubGoal.GoalId);
 
-    // Send the POST request.
     $.ajax("/api/subgoals", {
       type: "POST",
       data: newSubGoal
@@ -285,6 +288,12 @@ $(document).ready(function () {
   $(".close").on("click", function (event) {
     $(".popup-add-new-comment").css("display", "none");
     $("#new-comment").val("");
+  })
+
+  // Close Edit Subg Popup
+  $(".close").on("click", function (event) {
+    $(".popup-edit-subgoals").css("display", "none");
+    $("#edit-subgoal").val("");
   })
 
 
@@ -328,7 +337,7 @@ $(document).ready(function () {
     )
   })
 
-// Delete Subgoal Card
+  // Delete Subgoal Card
   $('.delete-subgoal').on('click', (event) => {
     console.log('delete subg was clicked!');
     subgId = event.target.id;
@@ -436,4 +445,3 @@ $(document).ready(function () {
 
   // ====================== End Joel's Work Station =================// 
 });
-
