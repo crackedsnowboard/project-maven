@@ -22,25 +22,30 @@ $(document).ready(function () {
     goalId = url.slice(url.lastIndexOf('/') + 1);
     new Chartist.Line("#time-each-day", {
       labels: getChartistLabels(goalId),
-      series: getTimeEachDaySeries(goalId)
+      series: [
+        getTimeEachDaySeries(goalId),
+        getTimeOverTimeSeries(goalId)
+      ]
     }, {
       fullWidth: true,
       chartPadding: {
         right: 40
-      }
+      },
     });
 
-  // chartist time each day graph
-    new Chartist.Line("#time-over-time", {
-      labels: getChartistLabels(goalId),
-      series: getTimeOverTimeSeries(goalId)
-    }, {
-      fullWidth: true,
-      chartPadding: {
-        right: 40
-      }
-    });
   }
+
+  // chartist time each day graph
+  //   new Chartist.Line("#time-over-time", {
+  //     labels: getChartistLabels(goalId),
+  //     series: getTimeOverTimeSeries(goalId)
+  //   }, {
+  //     fullWidth: true,
+  //     chartPadding: {
+  //       right: 40
+  //     }
+  //   });
+  // }
 
   function getTimeEachDaySeries(goalId) {
     timeEachDaySeries = $.ajax("/chartist/timeEachDay" + goalId, {
@@ -49,13 +54,13 @@ $(document).ready(function () {
     })
     chartistData = [];
     unsortedKeysArray = Object.keys(timeEachDaySeries.responseJSON);
-    sortedKeysArray = unsortedKeysArray.sort(function(a, b){return a-b});
+    sortedKeysArray = unsortedKeysArray.sort(function (a, b) { return a - b });
     for (i in sortedKeysArray) {
       thisKey = sortedKeysArray[i];
       chartistData.push(timeEachDaySeries.responseJSON[thisKey])
     }
     console.log(chartistData);
-    return [chartistData];
+    return chartistData;
   }
 
   function getTimeOverTimeSeries(goalId) {
@@ -65,7 +70,7 @@ $(document).ready(function () {
     })
     chartistData = [];
     unsortedKeysArray = Object.keys(timeOverTimeSeries.responseJSON);
-    sortedKeysArray = unsortedKeysArray.sort(function(a, b){return a-b});
+    sortedKeysArray = unsortedKeysArray.sort(function (a, b) { return a - b });
     for (i = sortedKeysArray.length - 1; i >= 0; i -= 1) {
       thisKey = sortedKeysArray[i];
       thisValue = timeOverTimeSeries.responseJSON[thisKey];
@@ -80,7 +85,7 @@ $(document).ready(function () {
       chartistData.unshift(thisValue)
     }
     console.log(chartistData)
-    return [chartistData];
+    return chartistData;
   }
 
   function getChartistLabels(goalId) {
@@ -90,7 +95,7 @@ $(document).ready(function () {
     })
     chartistData = [];
     unsortedKeysArray = Object.keys(dates.responseJSON);
-    sortedKeysArray = unsortedKeysArray.sort(function(a, b){return a-b});
+    sortedKeysArray = unsortedKeysArray.sort(function (a, b) { return a - b });
     console.log(sortedKeysArray)
     return sortedKeysArray;
   }
