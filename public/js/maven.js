@@ -8,8 +8,8 @@ $(document).ready(function () {
   var stopButtonJustClicked;
   var currentButton;
   var subgId;
-  var timeEachDayLabels;
-  var timeOverTimeLabels;
+  var timeEachDaySeries;
+  var timeOverTimeSeries;
   var chartistSeries;
 
   // ====================== Sam's Work Station =================// 
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
   // chartist time each day graph
     new Chartist.Line("#time-over-time", {
-      labels: getChartistLabel(goalId),
+      labels: getChartistLabels(goalId),
       series: getTimeOverTimeSeries(goalId)
     }, {
       fullWidth: true,
@@ -42,30 +42,55 @@ $(document).ready(function () {
   }
 
   function getTimeEachDaySeries(goalId) {
-    timeEachDayLabels = $.ajax("/chartist/timeEachDay" + goalId, {
+    timeEachDaySeries = $.ajax("/chartist/timeEachDay" + goalId, {
       type: "GET",
       async: false
     })
     chartistData = [];
-    console.log(timeEachDayLabels.responseJSON);
-    for (i in Object.keys(timeEachDayLabels.responseJSON)) {
-      thisKey = Object.keys(timeEachDayLabels.responseJSON)[i];
-      chartistData.push(timeEachDayLabels.responseJSON[thisKey])
+    unsortedKeysArray = Object.keys(timeEachDaySeries.responseJSON);
+    sortedKeysArray = unsortedKeysArray.sort(function(a, b){return a-b});
+    for (i in sortedKeysArray) {
+      thisKey = sortedKeysArray[i];
+      chartistData.push(timeEachDaySeries.responseJSON[thisKey])
     }
+    console.log(chartistData);
     return [chartistData];
   }
 
   function getTimeOverTimeSeries(goalId) {
-    // timeOverTimeLabels = $.ajax("/chartist/" + goalId, {
-    //   type: "GET",
-    //   async: false
-    // })
-    // fullJSON = timeOverTimeLabels.responseJSON;
-    return [1, 2, 3];
+    timeOverTimeSeries = $.ajax("/chartist/timeEachDay" + goalId, {
+      type: "GET",
+      async: false
+    })
+    chartistData = [];
+    unsortedKeysArray = Object.keys(timeOverTimeSeries.responseJSON);
+    sortedKeysArray = unsortedKeysArray.sort(function(a, b){return a-b});
+    for (i = sortedKeysArray.length - 1; i >= 0; i -= 1) {
+      thisKey = sortedKeysArray[i];
+      thisValue = timeOverTimeSeries.responseJSON[thisKey];
+      // console.log("this value: " + thisValue);
+      for (j = i - 1; j >= 0; j -= 1) {
+        nextKey = sortedKeysArray[j];
+        nextValue = timeOverTimeSeries.responseJSON[nextKey];
+        // console.log("next value: " + nextValue);
+        thisValue = thisValue + nextValue
+        // console.log("new this value: " + thisValue);
+      }
+      chartistData.unshift(thisValue)
+    }
+    console.log(chartistData)
+    return [chartistData];
   }
 
   function getChartistLabels(goalId) {
-    return [[1, 2, 3]];
+    dates = $.ajax("/chartist/timeEachDay" + goalId, {
+      type: "GET",
+      async: false
+    })
+    chartistData = [];
+    unsortedKeysArray = Object.keys(dates.responseJSON);
+    sortedKeysArray = unsortedKeysArray.sort(function(a, b){return a-b});
+    return [sortedKeysArray];
   }
 
   // on click listener for when a start timer button is clicked next to subgoal
