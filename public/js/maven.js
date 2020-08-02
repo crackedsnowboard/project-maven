@@ -20,8 +20,8 @@ $(document).ready(function () {
   if (url.includes("second")) {
     goalId = url.slice(url.lastIndexOf('/') + 1);
     new Chartist.Line("#time-each-day", {
-      labels: getTimeEachDayLabels(goalId),
-      series: getChartistSeries(goalId)
+      labels: getChartistLabels(goalId),
+      series: getTimeEachDaySeries(goalId)
     }, {
       fullWidth: true,
       chartPadding: {
@@ -31,8 +31,8 @@ $(document).ready(function () {
 
   // chartist time each day graph
     new Chartist.Line("#time-over-time", {
-      labels: getTimeOverTimeLabels(goalId),
-      series: getChartistSeries(goalId)
+      labels: getChartistLabel(goalId),
+      series: getTimeOverTimeSeries(goalId)
     }, {
       fullWidth: true,
       chartPadding: {
@@ -41,17 +41,21 @@ $(document).ready(function () {
     });
   }
 
-  function getTimeEachDayLabels(goalId) {
+  function getTimeEachDaySeries(goalId) {
     timeEachDayLabels = $.ajax("/chartist/timeEachDay" + goalId, {
       type: "GET",
       async: false
     })
-    console.log("time each day labels: ")
-    console.log(timeEachDayLabels)
-    return [1, 2, 3];
+    chartistData = [];
+    console.log(timeEachDayLabels.responseJSON);
+    for (i in Object.keys(timeEachDayLabels.responseJSON)) {
+      thisKey = Object.keys(timeEachDayLabels.responseJSON)[i];
+      chartistData.push(timeEachDayLabels.responseJSON[thisKey])
+    }
+    return [chartistData];
   }
 
-  function getTimeOverTimeLabels(goalId) {
+  function getTimeOverTimeSeries(goalId) {
     // timeOverTimeLabels = $.ajax("/chartist/" + goalId, {
     //   type: "GET",
     //   async: false
@@ -60,7 +64,7 @@ $(document).ready(function () {
     return [1, 2, 3];
   }
 
-  function getChartistSeries(goalId) {
+  function getChartistLabels(goalId) {
     return [[1, 2, 3]];
   }
 
