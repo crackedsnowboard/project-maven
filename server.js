@@ -1,8 +1,8 @@
 // Dependencies
 // =============================================================
 var express = require("express");
-// var session = require("express-session");
-// var passport = require("./config/passport");
+var session = require("express-session");
+var passport = require("./config/passport");
 var fs = require("fs");
 
 
@@ -25,9 +25,9 @@ app.use(express.static("public"));
 // app.use(express.json());
 
 // We need to use sessions to keep track of our user's login status
-// app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // ======================== End Joel's work area =========================
 
@@ -43,17 +43,17 @@ app.set("view engine", "handlebars");
 // ======================== Joel's work area =========================
 
 // middleware for logging api methods on routes. For testing purposes can delete before final deployment through line 37.
-app.use((req, res, next) => {
-  var now = new Date().toString();
-  var log = `${now}: ${req.method} ${req.url}`;
-  console.log(log);
-  fs.appendFile('server.log', log + '\n', (err) => {
-    if(err) {
-      console.log('unable to append to server.log');
-    }
-  });
-  next();
-});
+// app.use((req, res, next) => {
+//   var now = new Date().toString();
+//   var log = `${now}: ${req.method} ${req.url}`;
+//   console.log(log);
+//   fs.appendFile('server.log', log + '\n', (err) => {
+//     if(err) {
+//       console.log('unable to append to server.log');
+//     }
+//   });
+//   next();
+// });
 
 // Import routes and give the server access to them.
 // var routes = require("./controllers/mavenController.js");

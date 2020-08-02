@@ -1,4 +1,5 @@
-var db = require("../../models");
+// var db = require("../../models");
+var db = require('../../models');
 
 module.exports = function(app) {
   // Find all subgoals and return them to the user with res.json
@@ -46,6 +47,7 @@ module.exports = function(app) {
 
 // ======= Delete Card / Subgoal
   app.delete("/api/subgoals/:id", function(req, res) {
+    console.log('delete was hit!');
     // Delete the Subgoal with the id available to us in req.params.id
     db.Subgoals.destroy({
       where: {
