@@ -64,6 +64,7 @@ require("./controllers/routes/tasks-api-routes.js")(app);
 require("./controllers/routes/user-api-routes.js")(app);
 require("./controllers/routes/passport-api-routes.js")(app);
 require("./controllers/routes/passport-html-routes.js")(app);
+require("./controllers/routes/chartist-api-routes.js")(app);
 
 // ======================== End Joel's work area =========================
 
