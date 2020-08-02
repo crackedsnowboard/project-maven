@@ -123,7 +123,8 @@ input {
 }
 
 .subgoal-close,
-.task-close {
+.task-close,
+.close {
     position: absolute;
     top: 0px;
     right: 0px;
