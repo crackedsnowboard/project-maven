@@ -8,18 +8,91 @@ $(document).ready(function () {
   var stopButtonJustClicked;
   var currentButton;
   var subgId;
+  var timeEachDaySeries;
+  var timeOverTimeSeries;
+  var chartistSeries;
 
   // ====================== Sam's Work Station =================// 
 
-  // new Chartist.Line("#time-each-day", {
-  //   labels: getChartistLabels(),
-  //   series: getChartistSeries()
-  // }, {
-  //   fullWidth: true,
-  //   chartPadding: {
-  //     right: 40
-  //   }
-  // });
+  // chartist time each day graph
+
+  var url = window.location.href;
+  if (url.includes("second")) {
+    goalId = url.slice(url.lastIndexOf('/') + 1);
+    new Chartist.Line("#time-each-day", {
+      labels: getChartistLabels(goalId),
+      series: getTimeEachDaySeries(goalId)
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
+
+  // chartist time each day graph
+    new Chartist.Line("#time-over-time", {
+      labels: getChartistLabels(goalId),
+      series: getTimeOverTimeSeries(goalId)
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
+  }
+
+  function getTimeEachDaySeries(goalId) {
+    timeEachDaySeries = $.ajax("/chartist/timeEachDay" + goalId, {
+      type: "GET",
+      async: false
+    })
+    chartistData = [];
+    unsortedKeysArray = Object.keys(timeEachDaySeries.responseJSON);
+    sortedKeysArray = unsortedKeysArray.sort(function(a, b){return a-b});
+    for (i in sortedKeysArray) {
+      thisKey = sortedKeysArray[i];
+      chartistData.push(timeEachDaySeries.responseJSON[thisKey])
+    }
+    console.log(chartistData);
+    return [chartistData];
+  }
+
+  function getTimeOverTimeSeries(goalId) {
+    timeOverTimeSeries = $.ajax("/chartist/timeEachDay" + goalId, {
+      type: "GET",
+      async: false
+    })
+    chartistData = [];
+    unsortedKeysArray = Object.keys(timeOverTimeSeries.responseJSON);
+    sortedKeysArray = unsortedKeysArray.sort(function(a, b){return a-b});
+    for (i = sortedKeysArray.length - 1; i >= 0; i -= 1) {
+      thisKey = sortedKeysArray[i];
+      thisValue = timeOverTimeSeries.responseJSON[thisKey];
+      // console.log("this value: " + thisValue);
+      for (j = i - 1; j >= 0; j -= 1) {
+        nextKey = sortedKeysArray[j];
+        nextValue = timeOverTimeSeries.responseJSON[nextKey];
+        // console.log("next value: " + nextValue);
+        thisValue = thisValue + nextValue
+        // console.log("new this value: " + thisValue);
+      }
+      chartistData.unshift(thisValue)
+    }
+    console.log(chartistData)
+    return [chartistData];
+  }
+
+  function getChartistLabels(goalId) {
+    dates = $.ajax("/chartist/timeEachDay" + goalId, {
+      type: "GET",
+      async: false
+    })
+    chartistData = [];
+    unsortedKeysArray = Object.keys(dates.responseJSON);
+    sortedKeysArray = unsortedKeysArray.sort(function(a, b){return a-b});
+    console.log(sortedKeysArray)
+    return sortedKeysArray;
+  }
 
   // on click listener for when a start timer button is clicked next to subgoal
   $(".timer-button").on("click", function (event) {
@@ -122,10 +195,11 @@ $(document).ready(function () {
   // html-routes 
   $(".goal-card-button").on("click", function (event) {
     var id = $(this).attr("id");
+    goalId = id;
     console.log("gc clicked; id = " + id)
-
     $.ajax("/second/" + id, {
-      type: "GET"
+      type: "GET",
+      async: false
     }).then(function (res) {
       console.log("on second page");
       location.assign("/second/" + id);

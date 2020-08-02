@@ -1,9 +1,6 @@
 var moment = require("moment");
 
-var now = moment();
-var nowString = JSON.stringify(now)
-console.log(nowString);
-var nowObject = moment(nowString.postDate);
-console.log(nowObject);
-console.log(now.format("[Today is] dddd"));
-console.log(nowObject.format("[Today is] dddd"));
+var startTime = moment("2020-08-02T09:48:29.791Z")
+var stopTime = moment("2020-07-31T21:15:10.747Z")
+console.log(stopTime.diff(startTime));
+
