@@ -5,7 +5,7 @@ $(document).ready(function() {
   var passwordInput = $("input#password-input");
 
   // When the signup button is clicked, we validate the email and password are not blank
-$("#signup").on("click", function(event) {
+signUpForm.on("click", function(event) {
   console.log('i was clicked!');
     event.preventDefault();
     var userData = {
@@ -31,7 +31,7 @@ $("#signup").on("click", function(event) {
       password: password
     })
       .then(function(data) {
-        window.location.replace("/home");
+        // window.location.replace("/home");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
