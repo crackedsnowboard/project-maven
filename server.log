@@ -239,3 +239,8 @@ Sat Aug 01 2020 11:28:05 GMT-0700 (Pacific Daylight Time): DELETE /second/api/su
 Sat Aug 01 2020 11:28:16 GMT-0700 (Pacific Daylight Time): POST /api/tasks
 Sat Aug 01 2020 11:28:16 GMT-0700 (Pacific Daylight Time): GET /second/1
 Sat Aug 01 2020 11:28:28 GMT-0700 (Pacific Daylight Time): DELETE /second/api/subgoals/24
+Sat Aug 01 2020 13:08:58 GMT-0700 (Pacific Daylight Time): GET /
+Sat Aug 01 2020 13:09:18 GMT-0700 (Pacific Daylight Time): GET /?
+Sat Aug 01 2020 13:09:57 GMT-0700 (Pacific Daylight Time): GET /signup
+Sat Aug 01 2020 13:10:09 GMT-0700 (Pacific Daylight Time): GET /signup?
+Sun Aug 02 2020 08:05:54 GMT-0700 (Pacific Daylight Time): GET /
