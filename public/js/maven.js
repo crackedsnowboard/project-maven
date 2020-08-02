@@ -8,19 +8,60 @@ $(document).ready(function () {
   var stopButtonJustClicked;
   var currentButton;
   var subgId;
+  var timeEachDayLabels;
+  var timeOverTimeLabels;
+  var chartistSeries;
 
   // ====================== Sam's Work Station =================// 
 
-  if ($("#time-each-day").length) {
+  // chartist time each day graph
+
+  var url = window.location.href;
+  if (url.includes("second")) {
+    goalId = url.slice(url.lastIndexOf('/') + 1);
     new Chartist.Line("#time-each-day", {
-      labels: [1,2,3,4,5], // replace with getChartistLabels(),
-      series: [[100, 200, 300, 400, 500]] // reaplce with getChartistSeries()
+      labels: getTimeEachDayLabels(goalId),
+      series: getChartistSeries(goalId)
     }, {
       fullWidth: true,
       chartPadding: {
         right: 40
       }
     });
+
+  // chartist time each day graph
+    new Chartist.Line("#time-over-time", {
+      labels: getTimeOverTimeLabels(goalId),
+      series: getChartistSeries(goalId)
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
+  }
+
+  function getTimeEachDayLabels(goalId) {
+    timeEachDayLabels = $.ajax("/chartist/timeEachDay" + goalId, {
+      type: "GET",
+      async: false
+    })
+    console.log("time each day labels: ")
+    console.log(timeEachDayLabels)
+    return [1, 2, 3];
+  }
+
+  function getTimeOverTimeLabels(goalId) {
+    // timeOverTimeLabels = $.ajax("/chartist/" + goalId, {
+    //   type: "GET",
+    //   async: false
+    // })
+    // fullJSON = timeOverTimeLabels.responseJSON;
+    return [1, 2, 3];
+  }
+
+  function getChartistSeries(goalId) {
+    return [[1, 2, 3]];
   }
 
   // on click listener for when a start timer button is clicked next to subgoal
@@ -124,10 +165,11 @@ $(document).ready(function () {
   // html-routes 
   $(".goal-card-button").on("click", function (event) {
     var id = $(this).attr("id");
+    goalId = id;
     console.log("gc clicked; id = " + id)
-
     $.ajax("/second/" + id, {
-      type: "GET"
+      type: "GET",
+      async: false
     }).then(function (res) {
       console.log("on second page");
       location.assign("/second/" + id);
