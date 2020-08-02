@@ -34,27 +34,41 @@ module.exports = function (app) {
     });
   });
 
+
+
   //  ================ Colin's Work Space ================
+
+  function findAllUsers() {
+    console.log("find all users called");
+    db.Users.findAll({
+      where: {
+        UserId: id
+      }
+    })
+
+  }
 
   // Second webpage - will we have a second index2.handlebars page?
   // second route loads /second.html or 
   app.get("/second/:id", function (req, res) {
     id = req.params.id;
-   console.log(id);
-  db.Goals.findAll({
-    // raw: true,
-    where: { id: req.params.id }
-  }).then(function (data) {
-    // console.log(data);
-    GoalsData = {
-      Goals: data,
-    }
-    findAllSubG(GoalsData, id, res)
+    console.log(id);
+    db.Goals.findAll({
+      // raw: true,
+      where: {
+        id: req.params.id
+      }
+    }).then(function (data) {
+      // console.log(data);
+      GoalsData = {
+        Goals: data,
+      }
+      findAllSubG(GoalsData, id, res)
+    });
   });
-});
-    // res.sendFile(path.join(__dirname, "../../second.html"));
-    function findAllSubG (GoalsData, id,  res) {
-      console.log("findAllSubG's called");
+  // res.sendFile(path.join(__dirname, "../../second.html"));
+  function findAllSubG(GoalsData, id, res) {
+    console.log("findAllSubG's called");
     db.Subgoals.findAll({
       // raw: true,
 
@@ -66,7 +80,7 @@ module.exports = function (app) {
         //   model: db.Goals, 
         // },
         {
-          model: db.Tasks, 
+          model: db.Tasks,
         },
       ]
     }).then(function (data) {
@@ -74,16 +88,54 @@ module.exports = function (app) {
       handleBarsData = {
         Subgoals: data,
       }
-  
-    //  console.log(GoalsData);
-    //  console.log(handleBarsData)
-     let combinedData = Object.assign(GoalsData, handleBarsData);
-     console.log(combinedData);
+
+      //  console.log(GoalsData);
+      //  console.log(handleBarsData)
+      let combinedData = Object.assign(GoalsData, handleBarsData);
+      console.log(combinedData);
       res.render("second", combinedData);
     });
 
   };
+  app.get("/home/:id", function (req, res) {
+    var paramId = req.params.id;
+    db.Goals.findAll({
+      include: "Subgoals",
+      // raw: true,
+      where: {
+        UserId: paramId
+      }
+    }).then(function (data) {
+      console.log(data);
+      UserData = {
+        Goals: data,
+      }
+      findAllUsers(UserData, paramId, res)
+      // res.render("index", handleBarsData);
+    });
+  });
+
+  function findAllUsers(UserData, goalId, res) {
+    console.log("find all users called");
+    db.Users.findAll({
+      where: {
+        id: goalId
+      }
+    }).then(function (data) {
+      handleBarsData = {
+        Users: data,
+      }
+
+      let combinedData = Object.assign(UserData, handleBarsData);
+      console.log(combinedData);
+      res.render("index", combinedData)
+    })
+
+  }
+
 };
+
+
 
 // ==========================================
 // Test Two!! - Goals (then sub-taks)
@@ -118,14 +170,14 @@ module.exports = function (app) {
 
 
 
-  // // blog route loads blog.html
-  // app.get("/blog", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/blog.html"));
-  // });
+// // blog route loads blog.html
+// app.get("/blog", function(req, res) {
+//   res.sendFile(path.join(__dirname, "../public/blog.html"));
+// });
 
-  // app.get("/authors", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-  // });
+// app.get("/authors", function(req, res) {
+//   res.sendFile(path.join(__dirname, "../public/author-manager.html"));
+// });
 
 
 //   app.get("/second", function (req, res) {
@@ -143,6 +195,5 @@ module.exports = function (app) {
 //   });
 // });
 
-  //  ================ Colin's Work Space ================
+//  ================ Colin's Work Space ================
 // };
-
