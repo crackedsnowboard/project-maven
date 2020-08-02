@@ -207,13 +207,15 @@ $(document).ready(function () {
     })
   })
 
-  $(".goal-form").on("submit", function (event) {
+  $("#addGoal").on("click", function (event) {
+    var userId = req.params.id;
+    console.log(userId);
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
     var newGoal = {
       name: $("#goa").val().trim(),
-      UserId: 1
+      UserId: userId
     };
 
     // Send the POST request.
@@ -224,7 +226,7 @@ $(document).ready(function () {
       function () {
         console.log("created a new goal");
         // Reload the page to get the updated list
-        location.reload();
+        // location.reload();
       }
     );
   });
@@ -503,6 +505,13 @@ $(document).ready(function () {
     console.log('hello!');
     })
 
+    $(".test-btn").on('click', (event) => {
+      console.log('hi!');
+      subgId = event.target.id;
+      console.log(subgId);
+    
+      })
+
   var signUpForm = $("form.signup");
   var emailInput = $("input#email-input");
   var passwordInput = $("input#password-input");
@@ -579,13 +588,25 @@ function loginUser(email, password) {
     email: email,
     password: password
   })
-    .then(function() {
-      window.location.replace("/home");
+    .then(function(data) {
+      console.log(data.id);
+      getHome(data.id);
+      // window.location.replace("/home");
       // If there's an error, log the error
     })
     // .catch(function(err) {
     //   console.log(err);
     // });
+}
+
+// Login call passing param of UserId
+function getHome(userId) {
+  $.ajax("/home/" + userId, {
+    type: "GET"
+  }).then(function (res) {
+    console.log("on home page");
+    location.assign("/home/"+userId);
+  })
 }
 
  // ============= END LOGIN UP PAGE =================== // 
