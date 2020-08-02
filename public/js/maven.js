@@ -498,6 +498,71 @@ $(document).ready(function () {
     })
   })
 
+  // ============= SIGN UP PAGE =================== // 
+  $("#test").on('click', (event) => {
+    console.log('hello!');
+    })
+
+  var signUpForm = $("form.signup");
+  var emailInput = $("input#email-input");
+  var passwordInput = $("input#password-input");
+
+  // When the signup button is clicked, we validate the email and password are not blank
+$("#signup").on("click", function(event) {
+  console.log('i was clicked!');
+    event.preventDefault();
+    var userData = {
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim()
+    };
+
+    if (!userData.email || !userData.password) {
+      return;
+    }
+    // If we have an email and password, run the signUpUser function
+    signUpUser(userData.email, userData.password);
+    emailInput.val("");
+    passwordInput.val("");
+  });
+
+  // Does a post to the signup route. If successful, we are redirected to the members page
+  // Otherwise we log any errors
+  function signUpUser(email, password) {
+    $.post("/api/users", {
+      // name: name,
+      email: email,
+      password: password
+    })
+      .then(function(data) {
+        // window.location.replace("/home");
+        // If there's an error, handle it by throwing up a bootstrap alert
+      })
+      .catch(handleLoginErr);
+  }
+
+  function handleLoginErr(err) {
+    $("#alert .msg").text(err.responseJSON);
+    $("#alert").fadeIn(500);
+  }
+
+
+
+
+
+
+
+
+
+  // ============= END SIGN UP PAGE =================== // 
+
+
+
+
+
+
+
+
+
   // ====================== Joel's Work Station =================// 
 
   // $('.login-button').on('click', (event) => {
