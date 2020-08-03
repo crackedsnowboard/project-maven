@@ -702,6 +702,15 @@ $(document).ready(function () {
   })
 })
 
+ // Get back to Signup
+ $(".to-sign-up").on("click", () => {
+  $.ajax("/signup", {
+    type: "GET"
+  }).then(function (res) {
+    console.log("on home page");
+    location.assign("/signup");
+  })
+})
 // ============= END LOGIN UP PAGE =================== // 
 
 
