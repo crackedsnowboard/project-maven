@@ -238,7 +238,8 @@ input {
 }
 
 .robert {
-    align-self: auto;
+    display: block;
+    width: 100%;
 }
 
 body {
