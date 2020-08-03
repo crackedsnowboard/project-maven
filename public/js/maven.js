@@ -33,7 +33,7 @@ $(document).ready(function () {
     }, {
       fullWidth: true,
       chartPadding: {
-        right: 40,
+        right: 50,
         left: 40
         // top: -10
       },
