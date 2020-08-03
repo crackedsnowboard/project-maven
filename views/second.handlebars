@@ -3,7 +3,9 @@
   <div class="nav-wrapper">
     <a href="#" class="brand-logo left">Logo</a>
     <ul id="nav-mobile" class="right">
-      <li><a class="home-btn">Home</a></li>
+      {{#each Goals}}
+      <li><a class="home-btn" id={{dataValues.UserId}}>Home</a></li>
+      {{/each}}
       {{!-- <li><a href="badges.html">Components</a></li>
         <li><a href="collapsible.html">JavaScript</a></li> --}}
 
