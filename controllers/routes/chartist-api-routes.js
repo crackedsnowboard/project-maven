@@ -44,7 +44,7 @@ module.exports = function (app) {
                     timeSpent = stopTime.diff(startTime, "seconds");
                     today = startTime.year().toString() + (startTime.month() + 1).toString() + startTime.date().toString();
                     if (today.length === 6) {
-                        today = today.concat("0");
+                        today = startTime.year().toString() + (startTime.month() + 1).toString() + "0" + startTime.date().toString();
                     }
                     if (tracked[today]) {
                         tracked[today] = tracked[today] + timeSpent;
