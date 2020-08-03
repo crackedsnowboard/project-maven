@@ -15855,7 +15855,9 @@ $(document).ready(function () {
     })
     chartistData = [];
     unsortedKeysArray = Object.keys(timeEachDaySeries.responseJSON);
-    sortedKeysArray = unsortedKeysArray.sort(function (a, b) { return a - b });
+    sortedKeysArray = unsortedKeysArray.sort(function (a, b) {
+      return a - b
+    });
     for (i in sortedKeysArray) {
       thisKey = sortedKeysArray[i];
       chartistData.push(timeEachDaySeries.responseJSON[thisKey])
@@ -15871,7 +15873,9 @@ $(document).ready(function () {
     })
     chartistData = [];
     unsortedKeysArray = Object.keys(timeOverTimeSeries.responseJSON);
-    sortedKeysArray = unsortedKeysArray.sort(function (a, b) { return a - b });
+    sortedKeysArray = unsortedKeysArray.sort(function (a, b) {
+      return a - b
+    });
     for (i = sortedKeysArray.length - 1; i >= 0; i -= 1) {
       thisKey = sortedKeysArray[i];
       thisValue = timeOverTimeSeries.responseJSON[thisKey];
@@ -15896,7 +15900,9 @@ $(document).ready(function () {
     })
     chartistData = [];
     unsortedKeysArray = Object.keys(dates.responseJSON);
-    sortedKeysArray = unsortedKeysArray.sort(function (a, b) { return a - b });
+    sortedKeysArray = unsortedKeysArray.sort(function (a, b) {
+      return a - b
+    });
     console.log(sortedKeysArray)
     return sortedKeysArray;
   }
@@ -16170,22 +16176,22 @@ $(document).ready(function () {
     event.preventDefault();
     console.log('add goal called');
 
-    var newGoal = {    
-    name: $("#goa").val().trim(),
-    UserId: userId
-  };
-console.log(newGoal);
+    var newGoal = {
+      name: $("#goa").val().trim(),
+      UserId: userId
+    };
+    console.log(newGoal);
 
-$.ajax("/api/goals", {
-  type: "POST",
-  data: newGoal
-}).then(
-  function () {
-    console.log("created a new goal");
-    $("#goa").val('');
-    location.reload();
-    
-    });
+    $.ajax("/api/goals", {
+      type: "POST",
+      data: newGoal
+    }).then(
+      function () {
+        console.log("created a new goal");
+        $("#goa").val('');
+        location.reload();
+
+      });
   });
 
 
@@ -16321,34 +16327,34 @@ $.ajax("/api/goals", {
   // Second Page - Click on Home Btn
   $('.home-btn').on('click', (event) => {
     console.log('home btn clicked!');
-
-    $.ajax("/", {
+    userId = event.target.id;
+    $.ajax("/home/" + userId, {
       type: "GET"
     }).then(function (res) {
       console.log("on home page");
-      location.assign("/");
+      location.assign("/home/" + userId);
     })
   })
 
   // ============= SIGN UP PAGE =================== // 
   $("#test").on('click', (event) => {
     console.log('hello!');
-    })
+  })
 
-    $(".test-btn").on('click', (event) => {
-      console.log('hi!');
-      subgId = event.target.id;
-      console.log(subgId);
-    
-      })
+  $(".test-btn").on('click', (event) => {
+    console.log('hi!');
+    subgId = event.target.id;
+    console.log(subgId);
+
+  })
 
   var signUpForm = $("form.signup");
   var emailInput = $("input#email-input");
   var passwordInput = $("input#password-input");
 
   // When the signup button is clicked, we validate the email and password are not blank
-$("#signup").on("click", function(event) {
-  console.log('i was clicked!');
+  $("#signup").on("click", function (event) {
+    console.log('i was clicked!');
     event.preventDefault();
     var userData = {
       email: emailInput.val().trim(),
@@ -16368,12 +16374,12 @@ $("#signup").on("click", function(event) {
   // Otherwise we log any errors
   function signUpUser(email, password) {
     $.post("/api/users", {
-      // name: name,
-      email: email,
-      password: password
-    })
-      .then(function(data) {
-        window.location.replace("/home");
+        // name: name,
+        email: email,
+        password: password
+      })
+      .then(function (data) {
+        window.location.replace("/home/" + data.id);
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
@@ -16388,80 +16394,100 @@ $("#signup").on("click", function(event) {
 
 
   // ============= LOGIN UP PAGE =================== // 
-// Getting references to our form and inputs
-var loginForm = $("form.login");
-var emailInput = $("input#email-input");
-var passwordInput = $("input#password-input");
+  // Getting references to our form and inputs
+  var loginForm = $("form.login");
+  var emailInput = $("input#email-input");
+  var passwordInput = $("input#password-input");
 
-// When the form is submitted, we validate there's an email and password entered
-loginForm.on("submit", function(event) {
-  console.log("test?");
-  event.preventDefault();
-  var userData = {
-    email: emailInput.val().trim(),
-    password: passwordInput.val().trim()
-  };
+  // When the form is submitted, we validate there's an email and password entered
+  loginForm.on("submit", function (event) {
+    console.log("test?");
+    event.preventDefault();
+    var userData = {
+      email: emailInput.val().trim(),
+      password: passwordInput.val().trim()
+    };
 
-  if (!userData.email || !userData.password) {
-    return;
-  }
+    if (!userData.email || !userData.password) {
+      return;
+    }
 
-  // If we have an email and password we run the loginUser function and clear the form
-  loginUser(userData.email, userData.password);
-  emailInput.val("");
-  passwordInput.val("");
-});
+    // If we have an email and password we run the loginUser function and clear the form
+    loginUser(userData.email, userData.password);
+    emailInput.val("");
+    passwordInput.val("");
+  });
 
-// loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-function loginUser(email, password) {
-  $.post("/api/login", {
-    email: email,
-    password: password
-  })
-    .then(function(data) {
-      console.log(data.id);
-      getHome(data.id);
-      // window.location.replace("/home");
-      // If there's an error, log the error
-    })
+  // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+  function loginUser(email, password) {
+    $.post("/api/login", {
+        email: email,
+        password: password
+      })
+      .then(function (data) {
+        console.log(data.id);
+        getHome(data.id);
+        // window.location.replace("/home");
+        // If there's an error, log the error
+      })
     // .catch(function(err) {
     //   console.log(err);
     // });
-}
+  }
 
-// Login call passing param of UserId
-function getHome(userId) {
-  $.ajax("/home/" + userId, {
+  // Login call passing param of UserId
+  function getHome(userId) {
+    $.ajax("/home/" + userId, {
+      type: "GET"
+    }).then(function (res) {
+      console.log("on home page");
+      location.assign("/home/" + userId);
+    })
+  }
+
+  // Logout Btn
+  $(".logout-button").on("click", () => {
+    $.ajax("/logout", {
+      type: "GET"
+    }).then(function (res) {
+      console.log("on home page");
+      location.assign("/logout");
+    })
+  })
+
+ // Get back to Login
+ $(".back-to-login").on("click", () => {
+  $.ajax("/login", {
     type: "GET"
   }).then(function (res) {
     console.log("on home page");
-    location.assign("/home/"+userId);
+    location.assign("/login");
   })
-}
+})
 
- // ============= END LOGIN UP PAGE =================== // 
-
-
-
-  // ====================== Joel's Work Station =================// 
-
-  // $('.login-button').on('click', (event) => {
-  //   console.log('login btn clicked!');
-
-  //   $.ajax("/", {
-  //     type: "GET"
-  //   }).then(function (res) {
-  //     console.log("on home page");
-  //     window.location.assign('/login.html');
-  //   })
-
-  // })
+// ============= END LOGIN UP PAGE =================== // 
 
 
+
+// ====================== Joel's Work Station =================// 
+
+// $('.login-button').on('click', (event) => {
+//   console.log('login btn clicked!');
+
+//   $.ajax("/", {
+//     type: "GET"
+//   }).then(function (res) {
+//     console.log("on home page");
+//     window.location.assign('/login.html');
+//   })
+
+// })
 
 
 
 
-  // ====================== End Joel's Work Station =================// 
+
+
+// ====================== End Joel's Work Station =================// 
 });
 },{"chartist":3,"chartist-plugin-axistitle":1,"chartist-plugin-legend":2,"jquery":4}]},{},[5]);
