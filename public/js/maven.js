@@ -523,12 +523,12 @@ $.ajax("/api/goals", {
   // Second Page - Click on Home Btn
   $('.home-btn').on('click', (event) => {
     console.log('home btn clicked!');
-
-    $.ajax("/", {
+    userId = event.target.id;
+    $.ajax("/home/" + userId, {
       type: "GET"
     }).then(function (res) {
       console.log("on home page");
-      location.assign("/");
+      location.assign("/home/" +userId);
     })
   })
 
