@@ -40,9 +40,7 @@ module.exports = function(app) {
       "startTime": req.body.startTime,
       "stopTime": req.body.stopTime,
       "comments": req.body.comments,
-      "emoji": req.body.emoji,
-      "SubgoalId": req.body.SubgoalId,
-
+      "SubgoalId": req.body.SubgoalId
     }).then(function(dbTasks) {
       res.json(dbTasks);
     });

@@ -13,12 +13,17 @@
   </div>
 </nav>
 
-{{!-- Main --}}
+<div class="task-popup">
+  <div class="task-popup-content">
+    <button class="task-close">X</button>
+    <p class="task-message">How did it go? Write some comments below</p>
+    <input type="text" id="tas-comments">
+    <button class="submit-task-button">Submit</button>
+  </div>
+</div>
 
-<div class="container">
-
-  {{!-- Popup window when 'add a new comment' is clicked --}}
-  <div class="popup-add-new-comment">
+{{!-- Popup window when 'add a new comment' is clicked --}}
+<div class="popup-add-new-comment">
     <div class="popup-content">
       <button class="close">X</button>
       <p class="task-message">New Comment:</p>
@@ -27,7 +32,7 @@
     </div>
   </div>
 
-   {{!-- Popup window when 'add a new comment' is clicked --}}
+  {{!-- Popup window when 'add a new comment' is clicked --}}
   <div class="popup-edit-comments">
     <div class="popup-content">
       <button class="close">X</button>
@@ -47,14 +52,18 @@
     </div>
   </div>
 
+{{!-- Main --}}
+
+<div class="container">
+
   {{!-- This works!!! --}}
-    <ul>
-      {{#each Goals}}
-      <li>
-        <h1>{{dataValues.name}}</h1>
-      </li>
-      {{/each}}
-    </ul>
+  <ul>
+    {{#each Goals}}
+    <li>
+      <h1>{{dataValues.name}}</h1>
+    </li>
+    {{/each}}
+  </ul>
 
   {{!-- ----------------------------------------------- --}}
   {{!-- Attempt to do Subgoals.Goals.dataValues.name --}}
@@ -71,36 +80,36 @@
   <div class="row">
     <ul>
       {{#each Subgoals}}
-      {{> goals/second-goal-block}} 
+      {{> goals/second-goal-block}}
       {{/each}}
     </ul>
   </div>
 
-{{!-- Colin Work Station --}}
+  {{!-- Colin Work Station --}}
   {{!-- Create a New Sub Goal Option --}}
 
-     <ul>
-      {{#each Goals}}
-      {{> subGoals/subGoal-third}} 
-      {{/each}}
-    </ul>
-    
-{{!--     
+  <ul>
+    {{#each Goals}}
+    {{> subGoals/subGoal-third}}
+    {{/each}}
+  </ul>
+
+  {{!--     
   <h4>New Sub Goal</h4>
   <form class="subgoal-form">
     <div class="form-group">
       <label for="subgoa">Name:</label>
       <input type="text" class="subgoa-name" name="name" data-id="{{{dataValues.id}}}"> --}}
-      {{!-- <label for="subgoa">New Sub Goal GoalID:</label>
+  {{!-- <label for="subgoa">New Sub Goal GoalID:</label>
             <input type="text" id="subgoa-id" name="id"> --}}
-    {{!-- </div>
+  {{!-- </div>
     <button type="submit" class="subclass-btn">Add Sub Goal</button>
   </form> --}}
 
-{{!-- END Colin Work Station --}}
+  {{!-- END Colin Work Station --}}
 
 
-
+  <br><br><br>
   <div class="ct-chart ct-perfect-fourth" id="time-each-day"></div>
 
 
