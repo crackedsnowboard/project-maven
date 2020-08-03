@@ -17,22 +17,22 @@ module.exports = function (app) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // index route loads the main page in index.handlebars
-  app.get("/home", function (req, res) {
+  // app.get("/home", function (req, res) {
 
-    db.Goals.findAll({
-      include: "Subgoals",
-      // raw: true,
-      where: {
-        UserId: 1
-      }
-    }).then(function (data) {
-      console.log(data);
-      handleBarsData = {
-        Goals: data,
-      }
-      res.render("index", handleBarsData);
-    });
-  });
+  //   db.Goals.findAll({
+  //     include: "Subgoals",
+  //     // raw: true,
+  //     where: {
+  //       UserId: 1
+  //     }
+  //   }).then(function (data) {
+  //     console.log(data);
+  //     handleBarsData = {
+  //       Goals: data,
+  //     }
+  //     res.render("index", handleBarsData);
+  //   });
+  // });
 
 
 
@@ -76,9 +76,6 @@ module.exports = function (app) {
         GoalId: id,
       },
       include: [
-        // {
-        //   model: db.Goals, 
-        // },
         {
           model: db.Tasks,
         },
@@ -88,15 +85,32 @@ module.exports = function (app) {
       handleBarsData = {
         Subgoals: data,
       }
-
-      //  console.log(GoalsData);
-      //  console.log(handleBarsData)
-      let combinedData = Object.assign(GoalsData, handleBarsData);
-      console.log(combinedData);
-      res.render("second", combinedData);
+      findAllUsersSecond(GoalsData, handleBarsData, id, res)
+      // let combinedData = Object.assign(GoalsData, handleBarsData);
+      // console.log(combinedData);
+      // res.render("second", combinedData);
     });
 
+    function findAllUsersSecond(GoalsData, handleBarsData, id, res) {
+      console.log("find all second called");
+      db.Users.findAll({
+        where: {
+        id: id,
+        }
+      }).then(function (data) {
+        usersData = {
+          Users: data,
+        }
+
+        let combinedData = Object.assign(GoalsData, handleBarsData, usersData);
+        console.log(combinedData);
+        res.render("second", combinedData);
+      })
+    }
+
   };
+
+  // HOME - Individualized by ID
   app.get("/home/:id", function (req, res) {
     var paramId = req.params.id;
     db.Goals.findAll({
@@ -132,6 +146,16 @@ module.exports = function (app) {
     })
 
   }
+
+  // Render Logout Page
+  app.get("/logout", (req, res) => {
+    res.render("logout");
+  })
+
+  // Render Login page again
+  app.get("/login", (req, res) => {
+    res.render("login");
+  })
 
 };
 
