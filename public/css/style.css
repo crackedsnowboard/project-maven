@@ -46,7 +46,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    z-index: 1;
+    z-index: 20;
 }
 
 
@@ -78,7 +78,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    z-index: 1;
+    z-index: 20;
 }
 .popup-edit-subgoals {
     background: rgba(0, 0, 0, 0.6);
@@ -90,7 +90,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    z-index: 1;
+    z-index: 20;
 }
 .popup-add-new-comment {
     background: rgba(0, 0, 0, 0.6);
@@ -102,7 +102,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    z-index: 1;
+    z-index: 20;
 }
 
 .popup-content {
