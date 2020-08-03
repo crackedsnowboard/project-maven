@@ -1,6 +1,5 @@
 var moment = require("moment");
 
-var startTime = moment("2020-08-02T09:48:29.791Z")
-var stopTime = moment("2020-07-31T21:15:10.747Z")
-console.log(stopTime.diff(startTime));
-
+var start = moment("2020-08-01T06:30:00Z")
+var stop = moment("2020-08-01T07:30:00Z")
+console.log(stop.diff(start, "minutes"));

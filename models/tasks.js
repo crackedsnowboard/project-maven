@@ -4,8 +4,7 @@ module.exports = function (sequelize, DataTypes) {
     var Tasks = sequelize.define("Tasks", {
         startTime: DataTypes.STRING,
         stopTime: DataTypes.STRING,
-        comments: DataTypes.STRING,
-        emoji: DataTypes.INTEGER
+        comments: DataTypes.STRING
     });
 
     Tasks.associate = function(models) {
