@@ -41,7 +41,7 @@ module.exports = function (app) {
                 for (j in combinedData.Subgoals[i].dataValues.Tasks) {
                     startTime = moment(combinedData.Subgoals[i].dataValues.Tasks[j].dataValues.startTime, "YYYY-MM-DDTHH:mm:ssZ");
                     stopTime = moment(combinedData.Subgoals[i].dataValues.Tasks[j].dataValues.stopTime, "YYYY-MM-DDTHH:mm:ssZ");
-                    timeSpent = stopTime.diff(startTime, "seconds");
+                    timeSpent = stopTime.diff(startTime, "minutes");
                     today = startTime.year().toString() + (startTime.month() + 1).toString() + startTime.date().toString();
                     if (today.length === 6) {
                         today = startTime.year().toString() + (startTime.month() + 1).toString() + "0" + startTime.date().toString();

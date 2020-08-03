@@ -1,7 +1,11 @@
+var Legend = require("chartist-plugin-legend");
+var Axistitle = require("chartist-plugin-axistitle");
+var Chartist = require("chartist");
+var $ = require("jquery");
+
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 
 $(document).ready(function () {
-
   var goalId;
   var taskId;
   var editId;
@@ -29,8 +33,42 @@ $(document).ready(function () {
     }, {
       fullWidth: true,
       chartPadding: {
-        right: 40
+        right: 40,
+        left: 40
+        // top: -10
       },
+      // axisY: {
+      //   onlyInteger: true
+      // },
+      // ticks: {
+      //   precision: 0
+      // },
+      plugins: [
+        Chartist.plugins.ctAxisTitle({
+          axisX: {
+            axisTitle: 'Date (YYYYMMDD)',
+            axisClass: 'ct-axis-title',
+            offset: {
+              x: 0,
+              y: 30
+            },
+            textAnchor: 'middle'
+          },
+          axisY: {
+            axisTitle: 'Time (mins)',
+            axisClass: 'ct-axis-title',
+            offset: {
+              x: 0,
+              y: 0
+            },
+            textAnchor: 'middle',
+            flipTitle: false
+          }
+        }),
+        Chartist.plugins.legend({
+          legendNames: ['Time this day', 'Cumulative Time']
+        })
+      ]
     });
 
   }
@@ -327,7 +365,7 @@ $(document).ready(function () {
 
 
   // Runs the carousel function - Materialize Method
-  $('#demo-carousel').carousel();
+  // $('#demo-carousel').carousel();
 
   // NEW SUB GOAL BTN
   $(".subclass-btn").on("click", function (event) {
