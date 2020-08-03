@@ -5,39 +5,65 @@
       {{!-- Card Name --}}
       <div class="card-content white-text">
 
-        <span class="card-title" id='{{{id}}}' data-id="{{{id}}}" data-parent="{{{dataValues.name}}}">
-          <button class="edit-subgoal waves-effect waves-purple btn-large" id='{{{dataValues.id}}}' style="display: inline-block">{{{dataValues.name}}}</button>  
-          <button class="timer-button start-timer-button deep-purple btn-small" data-reference-subgoal-id={{{dataValues.id}}}><i class="material-icons">add_alarm</i></button>
+        <div class="row fred">
+          <div class="col s10">
+            <span class="card-title" id='{{{id}}}' data-id="{{{id}}}" data-parent="{{{dataValues.name}}}">
+              <button class="edit-subgoal waves-effect waves-purple btn-large" id='{{{dataValues.id}}}'
+                style="display: inline-block">{{{dataValues.name}}}</button></span>
+          </div>
+          <div class="col s2">
             <a class="btn-floating btn-small waves-effect waves-light red">
-              <i class="material-icons delete-subgoal" id="{{{dataValues.id}}}" style="display: inline-block">clear</i>
+              <i class="material-icons delete-subgoal" id="{{{dataValues.id}}}" style="display: inline-block">close</i>
             </a>
-          <h5>Comments:</h5>
-        </span>
+          </div>
+
+
+        </div>
+
+
+
+        <button class="timer-button start-timer-button deep-purple btn-small"
+          data-reference-subgoal-id={{{dataValues.id}}}><i class="material-icons">add_alarm</i></button>
+
+
+        <h5>Comments:</h5>
       </div>
 
-      {{!-- Card Comments / Emojis --}}
-      <div class="container">
+
+      <div class="container fred">
+        <div class="mary valign-wrapper">
+          <h5 class="fred blue-grey-text text-lighten-4 ">Sub Goals:
+            {{!-- <button class="fred col s1 add-subgoal-button btn-floating btn-small waves-effect waves-light red" data-reference-goal-id="{{{dataValues.id}}}"><i class="material-icons">add</i></button> --}}
+          </h5>
+          <button class="fred add-subgoal-button btn-floating btn-small waves-effect waves-light red"
+            data-reference-goal-id="{{{dataValues.id}}}"><i class="material-icons">add</i></button>
+        </div>
+
+
+        {{!-- Card Comments / Emojis --}}
+        {{!-- <div class="container"> --}}
 
         <ul>
           {{#each Tasks}}
-          <h6 class="comment-text">{{> tasks/task-block}}</h6>
-          <button class="edit-comment" id="{{{dataValues.id}}}"
+          <h5 class="comment-text">{{> tasks/task-block}}</h5>
+          <button class="edit-comment waves-effect waves-purple btn-small cyan accent-4" id="{{{dataValues.id}}}"
             data-subgoal-id="{{{dataValues.SubgoalId}}}">Edit</button>
-          <button class="delete-comment" id="{{{dataValues.id}}}">Delete</button>
+          <button class="delete-comment waves-effect waves-purple btn-small cyan accent-4"
+            id="{{{dataValues.id}}}">Delete</button>
           {{/each}}
 
         </ul>
         <br>
         {{!-- Add Comment Btn --}}
         {{!-- <button class="add-comment-button" data-reference-goal-id="{{{dataValues.id}}}">Add A New Comment</button> --}}
-      </div>
-      <br>
-      {{!-- Links if we want them later --}}
-      {{!-- <div class="card-action">
+        {{!-- </div> --}}
+        <br>
+        {{!-- Links if we want them later --}}
+        {{!-- <div class="card-action">
         <a href="#">This is a link</a>
         <a href="#">This is a link</a>
       </div> --}}
 
+      </div>
     </div>
-  </div>
 </li>
