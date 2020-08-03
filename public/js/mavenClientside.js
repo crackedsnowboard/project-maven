@@ -15937,7 +15937,6 @@ $(document).ready(function () {
   $(".task-close").on("click", function (event) {
     $(".task-popup").css("display", "none");
     $("#tas-comments").val("");
-    $("#tas-reaction").val(""); // change this in the future as we won't input text for reaction
   })
 
   $(".submit-task-button").on("click", function (event) {
@@ -15946,7 +15945,6 @@ $(document).ready(function () {
       startTime: stopButtonJustClicked.attr("startTime"),
       stopTime: stopButtonJustClicked.attr("stopTime"),
       comments: $("#tas-comments").val().trim(),
-      emoji: $("#tas-reaction").val().trim(),
       SubgoalId: stopButtonJustClicked.attr("data-reference-subgoal-id")
     }
     $.ajax("/api/tasks", {
@@ -15955,7 +15953,6 @@ $(document).ready(function () {
     }).then(
       function () {
         $("#tas-comments").val("");
-        $("#tas-reaction").val(""); // change this in the future
       }
     )
   })
