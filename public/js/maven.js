@@ -196,6 +196,7 @@ $(document).ready(function () {
     }).then(
       function () {
         $("#tas-comments").val("");
+        location.reload();
       }
     )
   })
