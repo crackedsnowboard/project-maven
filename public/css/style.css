@@ -216,3 +216,34 @@ input {
 .ct-chart-line-multipleseries .ct-legend li.inactive:before {
     background: transparent;
 }
+/* .container {
+    border: 1px dashed red;
+} */
+
+/* .btn-small {
+    border: 1px dashed green;
+} */
+
+/* .fred {
+    border: 1px dashed yellow;
+} */
+
+.mary {
+    display: flex;
+    justify-content: space-between;
+}
+
+.peter {
+    display: flex;
+}
+
+.robert {
+    align-self: auto;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-image: url("/assets/background2.jpg"); 
+}
