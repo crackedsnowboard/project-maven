@@ -684,14 +684,14 @@ $(document).ready(function () {
   }
 
   // Logout Btn
-  $(".logout-button").on("click", () => {
-    $.ajax("/logout", {
-      type: "GET"
-    }).then(function (res) {
-      console.log("on home page");
-      location.assign("/logout");
-    })
-  })
+  // $(".logout-button").on("click", () => {
+  //   $.ajax("/logout", {
+  //     type: "GET"
+  //   }).then(function (res) {
+  //     console.log("on home page");
+  //     // location.assign("/logout");
+  //   })
+  // })
 
  // Get back to Login
  $(".back-to-login").on("click", () => {
@@ -699,7 +699,7 @@ $(document).ready(function () {
     type: "GET"
   }).then(function (res) {
     console.log("on home page");
-    location.assign("/login");
+    // location.assign("/login");
   })
 })
 
@@ -709,7 +709,7 @@ $(document).ready(function () {
     type: "GET"
   }).then(function (res) {
     console.log("on home page");
-    location.assign("/signup");
+    // location.assign("/signup");
   })
 })
 // ============= END LOGIN UP PAGE =================== // 
