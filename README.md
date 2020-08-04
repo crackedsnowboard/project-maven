@@ -37,6 +37,20 @@ Within this seismic change, we asked ourselves if technology could be used to he
 
  A user could easily create a button and hit a timer that could track their time spent against an goal. This would, ideally, help people keep on track of their educational, health, and work goals. Shared accounts between tutors and personal trainers could allow our historical accountability partners log on and see where we struggled or had spent time.
 Please enjoy our app and we are welcome to feedback!
+## User_Story_Examples
+
+<p align="center">
+    <img src="images/ss7.png" width="400" />
+</p>
+
+
+<p align="center">
+ User Story #1 | #2  In Action
+ </p>
+
+<p align="center">
+    <img src="https://media.giphy.com/media/IecI9ZHXpzb8kMXKQg/giphy.gif" width="400" />
+</p>
 
 
 ## Models
