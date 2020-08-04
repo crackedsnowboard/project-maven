@@ -14,7 +14,7 @@
 
 ## Usage
 
-For detailed information regarding the usage of the app, please read the markdown provided on <b>Usage.md</B> which is listed above in our files.
+For detailed information regarding the usage of the app, please read the markdown provided on <b>Usage.md</B> which is listed above in our files directly below "README.md".
 
 ## Table of Contents 
 * [User Stories](#User_Stories)
