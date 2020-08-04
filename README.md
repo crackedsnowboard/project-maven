@@ -41,7 +41,7 @@ Please enjoy our app and we are welcome to feedback! - Joel Mathen
 ## Models
 
 <p align="center">
-    <img src="images/ss1.png" width="370" />
+    <img src="images/ss1.png" width="450" />
 </p>
 
 All data collected was stored in the same databse, however, there are separate tables for each of the following: User, Goals, Subgoals, and Tasks. From top down, all tables were associated with one to many relationships (see diagram above).
@@ -60,16 +60,9 @@ Although our team was restricted on time, we did have many stretch goals planned
  3) Providing more metrics of measurement for instances where total time is not as accurate (i.e. number of push-ups in a day) 
 
  
-
-## Code Highlight
-
-By using data-attributes, the handlebar #each function, and a conditional statement, I was able to dynamically generate buttons that not only change text but also change functionality after being clicked. 
-
-When the button is associated with an order that has not been "devoured", the click function pushes that item to the second list. If the item is in the "devoured" list, that same button will now act as a delete button.
 ______________
 
 ## Take_Aways
-MVC works really well to compartmentalize file structures. However, it requires a strong understanding of many moving parts that can take some time to fully understand.
 
 
 ## Technologies_Used
