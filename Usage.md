@@ -9,14 +9,14 @@ To sign up, simply enter your email and password in the respective fields and hi
 To add a new goal, fill out the "Add a goal" form with the name of your goal and press "enter".
 
 <p align="center">
-    <img src="images/ss8.jpg" width="350" />
+    <img src="images/ss8.jpg" width="410" />
 </p>
 
 
 After adding a goal, you will see a new card populate the page with the name of your goal at the top.
 
 <p align="center">
-    <img src="images/ss9.jpg" width="350" />
+    <img src="images/ss9.jpg" width="410" />
 </p>
 
 ### Add a Subgoal
@@ -25,15 +25,15 @@ A popup form will come up asking you to enter of the name of your subgoal. Enter
 Afterwards, you should see a new subgoal displayed in the body of that goal card.
 
 <p align="center">
-    <img src="images/ss10.jpg" width="350" />
+    <img src="images/ss10.jpg" width="410" />
 </p>
 
 <p align="center">
-    <img src="images/ss11.jpg" width="350" />
+    <img src="images/ss11.jpg" width="410" />
 </p>
 
 <p align="center">
-    <img src="images/ss12.jpg" width="350" />
+    <img src="images/ss12.jpg" width="410" />
 </p>
 
 
@@ -42,13 +42,13 @@ To start a task for a given subgoal, click on the purple clock icon next to that
 You will see that clock icon transform into the word "Stop". This indicates that the timer for your task has started and is waiting for you to complete it and click "Stop" to finish the task.
 
 <p align="center">
-    <img src="images/ss13.jpg" width="350" />
+    <img src="images/ss13.jpg" width="410" />
 </p>
 
 Once you have completed your task, click the "Stop" button. You will be prompted by a popup form asking you to leave some comments on how your task went. Add your comments then hit the "Submit" button.
 
 <p align="center">
-    <img src="images/ss14.jpg" width="350" />
+    <img src="images/ss14.jpg" width="410" />
 </p>
 
 ### Viewing your Personal Goal Data
@@ -67,5 +67,5 @@ You will also notice a chart displayed at the bottom of the page. This chart dis
 An example of this graph from a seeded test user is shown below.
 
 <p align="center">
-    <img src="images/ss15.jpg" width="350" />
+    <img src="images/ss15.jpg" width="410" />
 </p>
