@@ -9,8 +9,12 @@
 
 
 <p align="center">
-    <img src="https://media.giphy.com/media/lnOoR1i1FB6PH7WTC9/giphy.gif" width="380" />
+    <img src="https://media.giphy.com/media/lnOoR1i1FB6PH7WTC9/giphy.gif" width="440" />
 </p>
+
+## Usage
+
+For detailed information regarding the usage of the app, please read the markdown provided on <b>Usage.md</B> which is listed above in our files.
 
 ## Table of Contents 
 * [User Stories](#User_Stories)
@@ -24,6 +28,7 @@
 * [Technologies Used](#technologies_used)
 
 * [Contributors | Contact](#Contributors)
+
 
 ## Summary and Overview
 
@@ -58,7 +63,7 @@ Please enjoy our app and we are welcome to feedback!
 ## Models
 
 <p align="center">
-    <img src="images/ss1.png" width="500" />
+    <img src="images/ss1.png" width="530" />
 </p>
 
 All data collected was stored in the same databse, however, there are separate tables for each of the following: User, Goals, Subgoals, and Tasks. From top down, all tables were associated with one to many relationships (see diagram above).
@@ -67,7 +72,7 @@ All data collected was stored in the same databse, however, there are separate t
 
 Stretch Goals            |  Stretch Goals Cont... 
 :-------------------------:|:-------------------------:
-<img src="images/ss2.png" width="270" />  |  <img src="images/ss3.png" width="270" />
+<img src="images/ss2.png" width="230" />  |  <img src="images/ss3.png" width="230" />
 
 Although our team was restricted on time, we did have many stretch goals planned for future development. The main features include the following:
  1) Creating shared accounts for instances like students and teachers 
