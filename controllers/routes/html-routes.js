@@ -148,14 +148,14 @@ module.exports = function (app) {
   }
 
   // Render Logout Page
-  app.get("/logout", (req, res) => {
-    res.render("logout");
-  })
+  // app.get("/logout", (req, res) => {
+  //   res.render("logout");
+  // })
 
   // Render Login page again
-  app.get("/login", (req, res) => {
-    res.render("login");
-  })
+  // app.get("/login", (req, res) => {
+  //   res.render("login");
+  // })
 
 };
 
