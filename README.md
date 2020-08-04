@@ -12,7 +12,9 @@
     <img src="https://media.giphy.com/media/lnOoR1i1FB6PH7WTC9/giphy.gif" width="380" />
 </p>
 
-## Table of Contents
+## Table of Contents 
+* [User Stories](#User_Stories)
+
 * [Models](#models)
 
 * [Future Developments](#future_developments)
@@ -37,7 +39,7 @@ Within this seismic change, we asked ourselves if technology could be used to he
 
  A user could easily create a button and hit a timer that could track their time spent against an goal. This would, ideally, help people keep on track of their educational, health, and work goals. Shared accounts between tutors and personal trainers could allow our historical accountability partners log on and see where we struggled or had spent time.
 Please enjoy our app and we are welcome to feedback!
-## User_Story_Examples
+## User_Stories
 
 <p align="center">
     <img src="images/ss7.png" width="400" />
@@ -45,7 +47,7 @@ Please enjoy our app and we are welcome to feedback!
 
 
 <p align="center">
- User Story #1 | #2  In Action
+ <b>User Story #1 | #2  In Action</b>
  </p>
 
 <p align="center">
@@ -65,7 +67,7 @@ All data collected was stored in the same databse, however, there are separate t
 
 Stretch Goals            |  Stretch Goals Cont... 
 :-------------------------:|:-------------------------:
-<img src="images/ss2.png" width="300" />  |  <img src="images/ss3.png" width="300" />
+<img src="images/ss2.png" width="270" />  |  <img src="images/ss3.png" width="270" />
 
 Although our team was restricted on time, we did have many stretch goals planned for future development. The main features include the following:
  1) Creating shared accounts for instances like students and teachers 
