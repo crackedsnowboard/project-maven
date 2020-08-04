@@ -9,7 +9,7 @@
 
 
 <p align="center">
-    <img src="https://media.giphy.com/media/lnOoR1i1FB6PH7WTC9/giphy.gif" width="350" />
+    <img src="https://media.giphy.com/media/lnOoR1i1FB6PH7WTC9/giphy.gif" width="380" />
 </p>
 
 ## Table of Contents
@@ -67,17 +67,6 @@ By using data-attributes, the handlebar #each function, and a conditional statem
 
 When the button is associated with an order that has not been "devoured", the click function pushes that item to the second list. If the item is in the "devoured" list, that same button will now act as a delete button.
 ______________
-
-Data Attribute:
-<p>
-    <img src="/images/ss1.png" width="500" />
-</p>
-
-Same class / different API call based on conditional:
-<p align="center">
-    <img src="images/ss1.png" width="270" />
-</p>
-
 
 ## Take_Aways
 MVC works really well to compartmentalize file structures. However, it requires a strong understanding of many moving parts that can take some time to fully understand.
