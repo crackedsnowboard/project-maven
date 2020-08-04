@@ -1,5 +1,5 @@
 ## Usage
-To use the application, open the deployed app via the heroku link [here](https://vast-hollows-48558.herokuapp.com/login).
+To use the application, open the deployed app via the heroku link [here](https://vast-hollows-48558.herokuapp.com).
 
 ### Login and Signup
 Upon opening the application, you should see a login page. If you already have an account, enter your email and password then hit the log in button. If you do not yet have an account, click the sign up link at the bottom of the login page.
@@ -69,3 +69,8 @@ An example of this graph from a seeded test user is shown below.
 <p align="center">
     <img src="images/ss15.jpg" width="460" />
 </p>
+
+<br><br>
+## Viewing the Application with a Seeded Example User
+
+If you want to see how the application looks on an account that has been using it for an extended period of time, login to the application with email = johnsmith@example.com and password = password. This will log you into the application on an account that is populated with seed data. This is especially useful for viewing the graph on the goal page, since the data being graphed is dependent on time points from tasks collected on different dates. Because of this, users have to use the application consistently for weeks/months before the graph is populated with a decent amount of data. This is the main reason why we've included this seed data account, so you to see what an account looks like after prolonged, consistent use.
