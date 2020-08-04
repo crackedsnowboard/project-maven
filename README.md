@@ -13,6 +13,7 @@
 </p>
 
 ## Table of Contents
+* [Models](#models)
 
 * [Future Developments](#future_developments)
 
@@ -35,13 +36,13 @@ In the winter of 2020, Covid-19 spread throughout the planet and changed everyth
 Within this seismic change, we asked ourselves if technology could be used to help people to transition this time period until a vaccination can be found.  From this idea, we decided to build Wip (Work in Progress) to help users track their time toward learning objectives or personal goals.
 
  A user could easily create a button and hit a timer that could track their time spent against an goal. This would, ideally, help people keep on track of their educational, health, and work goals. Shared accounts between tutors and personal trainers could allow our historical accountability partners log on and see where we struggled or had spent time.
-Please enjoy our app and we are welcome to feedback! - Joel Mathen
+Please enjoy our app and we are welcome to feedback!
 
 
 ## Models
 
 <p align="center">
-    <img src="images/ss1.png" width="450" />
+    <img src="images/ss1.png" width="500" />
 </p>
 
 All data collected was stored in the same databse, however, there are separate tables for each of the following: User, Goals, Subgoals, and Tasks. From top down, all tables were associated with one to many relationships (see diagram above).
@@ -50,7 +51,7 @@ All data collected was stored in the same databse, however, there are separate t
 
 Stretch Goals            |  Stretch Goals Cont... 
 :-------------------------:|:-------------------------:
-<img src="images/ss2.png" width="230" />  |  <img src="images/ss3.png" width="230" />
+<img src="images/ss2.png" width="300" />  |  <img src="images/ss3.png" width="300" />
 
 Although our team was restricted on time, we did have many stretch goals planned for future development. The main features include the following:
  1) Creating shared accounts for instances like students and teachers 
@@ -63,6 +64,18 @@ Although our team was restricted on time, we did have many stretch goals planned
 ______________
 
 ## Take_Aways
+
+Our team consisted of three relatively new programmer attempting to solve a technology problem using the MVC design paradigm. There were a lot of firsts in this projects for all of us:
+
+- First time deploying an MySQL database to Heroku
+- First time using an authentication module such as Passport
+- First time using Handlebars for dynamic client side HTML rendering
+- First time using CSS framework Materialize
+- First time using Chartist library
+
+In addition to the immense technical learning curve we imbibed during this one week sprint, this was also the first time the three of us worked together. We practiced the agile development method and conducted daily scrum meetings. The team dynamics over this week were outstanding and a key takeaway is that joint commitment and accountability augments team dynamics which made this sprint highly enjoyable and productive.
+
+We will always be learning new technologies but the human element behind the teams creating applications is really the secret sauce behind it all.
 
 
 ## Technologies_Used
