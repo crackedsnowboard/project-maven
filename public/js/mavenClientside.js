@@ -16447,14 +16447,14 @@ $(document).ready(function () {
   }
 
   // Logout Btn
-  $(".logout-button").on("click", () => {
-    $.ajax("/logout", {
-      type: "GET"
-    }).then(function (res) {
-      console.log("on home page");
-      location.assign("/logout");
-    })
-  })
+  // $(".logout-button").on("click", () => {
+  //   $.ajax("/logout", {
+  //     type: "GET"
+  //   }).then(function (res) {
+  //     console.log("on home page");
+  //     // location.assign("/logout");
+  //   })
+  // })
 
  // Get back to Login
  $(".back-to-login").on("click", () => {
